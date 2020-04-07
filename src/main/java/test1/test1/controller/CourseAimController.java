@@ -18,7 +18,7 @@ public class CourseAimController {
     @GetMapping("/all")
     public String getAllStudent(ModelMap modelMap){
         modelMap.addAttribute("courseAims",aimService.findAll());
-        return "admin/courseAim";
+        return "teacher/courseAim";
     }
 
     @PostMapping("/courseAim")
@@ -31,7 +31,7 @@ public class CourseAimController {
 
         List<CourseAim> courseAims = aimService.findAll();
         modelMap.put("courseAims", courseAims);
-        return "admin/courseAim";
+        return "teacher/courseAim";
     }
 
     @RequestMapping("/delete/{id}")
@@ -39,14 +39,14 @@ public class CourseAimController {
         aimService.deleteById(id);
         List<CourseAim> courseAims = aimService.findAll();
         map.put("courseAims", courseAims);
-        return "admin/courseAim";
+        return "teacher/courseAim";
     }
 
     @RequestMapping("/edit")
     public String edit(int id,ModelMap modelMap){
         CourseAim ca = aimService.getById(id);
         modelMap.addAttribute("ca",ca);
-        return "admin/editCourseAim";
+        return "teacher/editCourseAim";
     }
 
     @PutMapping
@@ -65,6 +65,6 @@ public class CourseAimController {
         aimService.addAim(courseAim);
         List<CourseAim> courseAims = aimService.findAll();
         map.put("courseAims", courseAims);
-        return "admin/courseAim";
+        return "teacher/courseAim";
     }
 }

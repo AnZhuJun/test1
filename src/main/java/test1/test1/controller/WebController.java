@@ -49,7 +49,7 @@ public class WebController {
         if(temp.equals("admin"))
             return "admin/common/adminNavigator";
         else
-            return "admin/teachermain/adminNavigator";
+            return "teacher/teachermain/adminNavigator";
     }
 
     @GetMapping("/registration")

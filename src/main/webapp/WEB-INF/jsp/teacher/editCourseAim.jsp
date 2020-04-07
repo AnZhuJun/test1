@@ -45,4 +45,4 @@
     </div>
 </div>
 
-<%@include file="common/adminFooter.jsp" %>
+<%@include file="../admin/common/adminFooter.jsp" %>
