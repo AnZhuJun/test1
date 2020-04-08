@@ -23,7 +23,7 @@ public class TeacherService {
     private RoleDao roleDao;
 
     public List<Teacher> findAll(){
-        return teacherDao.findAllByTeacheridIsLessThan(998);
+        return teacherDao.findAllByTeacheridIsGreaterThan(2);
     }
 
     public Teacher getById(int id){

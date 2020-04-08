@@ -8,8 +8,9 @@
 <c:set var="light" value="6"/>
 <%@include file="teachermain/adminNavigator.jsp" %>
 
-
-
+<head>
+    <title>目标管理</title>
+</head>
 <div class="container" >
     <ol class="breadcrumb">
         <li>目标信息</li>

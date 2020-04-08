@@ -8,5 +8,5 @@ import java.util.List;
 public interface TeacherDao extends JpaRepository<Teacher,Integer> {
     List<Teacher> findAllByTeachername(String name);
     Teacher findByUsername(String name);
-    List<Teacher> findAllByTeacheridIsLessThan(int less);
+    List<Teacher> findAllByTeacheridIsGreaterThan(int greate);
 }

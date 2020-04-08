@@ -1,6 +1,7 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +17,9 @@ public class CourseAimController {
     CourseAimService aimService;
 
     @GetMapping("/all")
-    public String getAllStudent(ModelMap modelMap){
-        modelMap.addAttribute("courseAims",aimService.findAll());
+    public String getAllStudent(String id,ModelMap modelMap){
+        List<CourseAim> courseAim = aimService.findAll(id);
+        modelMap.addAttribute("courseAims",courseAim);
         return "teacher/courseAim";
     }
 
@@ -29,15 +31,16 @@ public class CourseAimController {
         courseAim.setAim(aim);
         aimService.addAim(courseAim);
 
-        List<CourseAim> courseAims = aimService.findAll();
+        List<CourseAim> courseAims = aimService.findByTeacherid(teacherid);
         modelMap.put("courseAims", courseAims);
         return "teacher/courseAim";
     }
 
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable int id,ModelMap map){
+        int teacid = aimService.getById(id).getTeacherid();
         aimService.deleteById(id);
-        List<CourseAim> courseAims = aimService.findAll();
+        List<CourseAim> courseAims = aimService.findByTeacherid(teacid);
         map.put("courseAims", courseAims);
         return "teacher/courseAim";
     }
@@ -63,7 +66,7 @@ public class CourseAimController {
     public String update(CourseAim courseAim, ModelMap map){
         courseAim.setAimid(courseAim.getAimid());
         aimService.addAim(courseAim);
-        List<CourseAim> courseAims = aimService.findAll();
+        List<CourseAim> courseAims = aimService.findByTeacherid(courseAim.getTeacherid());
         map.put("courseAims", courseAims);
         return "teacher/courseAim";
     }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import test1.test1.bean.CourseAim;
 import test1.test1.dao.CourseAimDao;
+import test1.test1.dao.TeacherDao;
 
 import java.util.List;
 
@@ -12,8 +13,15 @@ public class CourseAimService {
     @Autowired
     CourseAimDao courseAimDao;
 
-    public List<CourseAim> findAll(){
-        return courseAimDao.findAll();
+    @Autowired
+    TeacherDao teacherDao;
+
+    public List<CourseAim> findAll(String id){
+        return courseAimDao.findAllByTeacherid(teacherDao.findByUsername(id).getTeacherid());
+    }
+
+    public List<CourseAim> findByTeacherid(int id){
+        return courseAimDao.findAllByTeacherid(id);
     }
 
     public CourseAim getById(int id){

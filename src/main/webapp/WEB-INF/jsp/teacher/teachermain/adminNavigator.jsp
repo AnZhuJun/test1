@@ -25,7 +25,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-             <li class="${light==6?'active':''}"><a  href="/courseAim/all">课程目标管理</a></li>
+             <li class="${light==6?'active':''}"><a  href="/courseAim/all?id=${name }">课程目标管理</a></li>
             </ul>
         </div>
 

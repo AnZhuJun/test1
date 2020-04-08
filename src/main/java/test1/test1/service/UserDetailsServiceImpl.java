@@ -2,6 +2,7 @@ package test1.test1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -33,6 +34,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         for (Role role:teacher.getRoles()){
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-        return new org.springframework.security.core.userdetails.User(teacher.getUsername(),teacher.getPassword(),grantedAuthorities);
+
+        if(teacher.getUsername().equals("admin"))
+            return new org.springframework.security.core.userdetails.User(teacher.getUsername(),teacher.getPassword(), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN"));
+        else
+            return new org.springframework.security.core.userdetails.User(teacher.getUsername(),teacher.getPassword(),grantedAuthorities);
     }
 }
