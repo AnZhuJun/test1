@@ -22,9 +22,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="courseid" class="col-sm-2 control-label">教师编码</label>
+
                         <div class="col-sm-10">
-                            <input type="number"  class="form-control" value="${ca.teacherid}" id="teacherid" name="teacherid" placeholder="请输入教师编码">
+                            <input type="hidden"  class="form-control" value="${ca.teacherid}" id="teacherid" name="teacherid">
                         </div>
                     </div>
                     <div class="form-group">

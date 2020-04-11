@@ -52,19 +52,20 @@
             <div class="panel-body">
                 <form class="form-horizontal" method="post" id="up-form" action="/courseAim/courseAim" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="teacherid" class="col-sm-2 control-label">教师编号</label>
+
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="teacherid" name="teacherid"  placeholder="请输入教师编号">
+                            <input type="hidden" class="form-control" value="${caTeacherId.teacherid}" id="teacherid" name="teacherid">
                         </div>
+
                     </div>
                     <div class="form-group">
-                        <label for="teacherid" class="col-sm-2 control-label">课程编号</label>
+                        <label for="courseid" class="col-sm-2 control-label">课程编号</label>
                         <div class="col-sm-10">
                             <input type="number"  class="form-control" id="courseid" name="courseid" placeholder="请输入课程编号">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="teacherid" class="col-sm-2 control-label">目标</label>
+                        <label for="courseid" class="col-sm-2 control-label">目标</label>
                         <div class="col-sm-10">
                             <input type="text"  class="form-control" id="aim" name="aim" placeholder="请输入目标">
                         </div>

@@ -24,6 +24,36 @@ public class Paper {
     @Column
     private int classid;
 
+    @Column(name = "username")
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Paper(int courseid, int dt, int xt, int scores, int classid, String username) {
+        this.courseid = courseid;
+        this.dt = dt;
+        this.xt = xt;
+        this.scores = scores;
+        this.classid = classid;
+        this.username = username;
+    }
+
+    public Paper(int paperid, int courseid, int dt, int xt, int scores, int classid, String username) {
+        this.paperid = paperid;
+        this.courseid = courseid;
+        this.dt = dt;
+        this.xt = xt;
+        this.scores = scores;
+        this.classid = classid;
+        this.username = username;
+    }
+
     public int getPaperid() {
         return paperid;
     }
@@ -75,12 +105,5 @@ public class Paper {
     public Paper() {
     }
 
-    public Paper(int paperid, int courseid, int dt, int xt, int scores, int classid) {
-        this.paperid = paperid;
-        this.courseid = courseid;
-        this.dt = dt;
-        this.xt = xt;
-        this.scores = scores;
-        this.classid = classid;
-    }
+
 }

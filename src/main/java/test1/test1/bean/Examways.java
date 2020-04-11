@@ -17,9 +17,6 @@ public class Examways {
     private int courseid;
 
     @Column
-    private int aimid;
-
-    @Column
     private int psper;
 
     @Column
@@ -55,13 +52,6 @@ public class Examways {
         this.courseid = courseid;
     }
 
-    public int getAimid() {
-        return aimid;
-    }
-
-    public void setAimid(int aimid) {
-        this.aimid = aimid;
-    }
 
     public int getPsper() {
         return psper;
@@ -98,11 +88,11 @@ public class Examways {
     public Examways() {
     }
 
-    public Examways(int examwaysid, int teacherid, int courseid, int aimid, int psper, int midper, int finper, String orderponit) {
+    public Examways(int examwaysid, int teacherid, int courseid, int psper, int midper, int finper, String orderponit) {
         this.examwaysid = examwaysid;
         this.teacherid = teacherid;
         this.courseid = courseid;
-        this.aimid = aimid;
+
         this.psper = psper;
         this.midper = midper;
         this.finper = finper;

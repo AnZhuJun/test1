@@ -36,6 +36,10 @@ public class TeacherService {
         return teacherDao.save(teacher);
     }
 
+    public Teacher findByUsername(String username){
+        return teacherDao.findByUsername(username);
+    }
+
     public Teacher deleteById(int id){
         Teacher teacher = getById(id);
         if (teacher.getTeacherid() > -1) {

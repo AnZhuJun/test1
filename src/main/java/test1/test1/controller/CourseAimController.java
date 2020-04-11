@@ -1,12 +1,13 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import test1.test1.bean.CourseAim;
+import test1.test1.bean.Teacher;
 import test1.test1.service.CourseAimService;
+import test1.test1.service.TeacherService;
 
 import java.util.List;
 
@@ -16,8 +17,14 @@ public class CourseAimController {
     @Autowired
     CourseAimService aimService;
 
+    @Autowired
+    TeacherService teacherService;
+
     @GetMapping("/all")
     public String getAllStudent(String id,ModelMap modelMap){
+        Teacher teacher = teacherService.findByUsername(id);
+        modelMap.addAttribute("caTeacherId",teacher);
+
         List<CourseAim> courseAim = aimService.findAll(id);
         modelMap.addAttribute("courseAims",courseAim);
         return "teacher/courseAim";
@@ -33,7 +40,7 @@ public class CourseAimController {
 
         List<CourseAim> courseAims = aimService.findByTeacherid(teacherid);
         modelMap.put("courseAims", courseAims);
-        return "teacher/courseAim";
+        return "teacher/teachermain/adminNavigator";
     }
 
     @RequestMapping("/delete/{id}")

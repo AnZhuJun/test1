@@ -12,12 +12,12 @@ public class PaperService {
     @Autowired
     PaperDao paperDao;
 
-    public List<Paper> findAll(){
-        return paperDao.findAll();
+    public List<Paper> findAllByUsername(String username){
+        return paperDao.findAllByUsername(username);
     }
 
     public Paper getById(int id){
-        return paperDao.findById(id).orElse(new Paper(-1,-1,-1,-1,-1,-1));
+        return paperDao.findById(id).orElse(new Paper(-1,-1,-1,-1,-1,null));
     }
 
     public Paper addPaper(Paper paper){
