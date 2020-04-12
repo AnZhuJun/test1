@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import test1.test1.bean.ExamScoreWays;
 import test1.test1.bean.Examways;
 import test1.test1.dao.ExamScoreWaysDao;
+import test1.test1.dao.TeacherDao;
 
 import java.util.List;
 
@@ -13,16 +14,23 @@ public class ExamScoreWaysService {
     @Autowired
     ExamScoreWaysDao examScoreWaysDao;
 
-    public List<ExamScoreWays> findAll(){
-        return examScoreWaysDao.findAll();
+    @Autowired
+    TeacherDao teacherDao;
+
+    public List<ExamScoreWays> findAllByUsername(String username){
+        return examScoreWaysDao.findAllByTeacherid(teacherDao.findByUsername(username).getTeacherid());
+    }
+
+    public List<ExamScoreWays> findByTeacherid(int id){
+        return examScoreWaysDao.findAllByTeacherid(id);
     }
 
     public ExamScoreWays getById(int id){
-        return examScoreWaysDao.findById(id).orElse(new ExamScoreWays(-1,-1,-1,-1,"null","null","null","null"));
+        return examScoreWaysDao.findById(id).orElse(new ExamScoreWays(-1,-1,-1,"null","null","null","null"));
     }
 
-    public ExamScoreWays addExamScoreWays(ExamScoreWays examways){
-        return examScoreWaysDao.save(examways);
+    public ExamScoreWays addExamScoreWays(ExamScoreWays examScoreWays){
+        return examScoreWaysDao.save(examScoreWays);
     }
 
     public ExamScoreWays deleteById(int id){

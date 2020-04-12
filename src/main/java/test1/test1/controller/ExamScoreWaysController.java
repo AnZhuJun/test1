@@ -1,31 +1,85 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import test1.test1.bean.ExamScoreWays;
+import test1.test1.bean.Examways;
+import test1.test1.bean.Teacher;
 import test1.test1.service.ExamScoreWaysService;
+import test1.test1.service.TeacherService;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/examscoreways")
 public class ExamScoreWaysController {
     @Autowired
     ExamScoreWaysService examScoreWaysService;
 
+    @Autowired
+    TeacherService teacherService;
+
     @GetMapping("/all")
-    public @ResponseBody
-    List<ExamScoreWays> getAllExamScoreWays(){
-        return examScoreWaysService.findAll();
+    public String getAllExamScoreWays(String username, ModelMap modelMap){
+        Teacher teacher = teacherService.findByUsername(username);
+        modelMap.addAttribute("eswTeacherId",teacher);
+
+
+        List<ExamScoreWays> examScoreWay = examScoreWaysService.findAllByUsername(username);
+        modelMap.addAttribute("examscoreway",examScoreWay);
+        return "teacher/examscoreways";
+    }
+
+    @PostMapping("/examscoreways")
+    public String addAndGetExamScoreWays(int teacherid,int courseid,String best,String good,String soso,String worse,ModelMap modelMap){
+        ExamScoreWays examScoreWays = new ExamScoreWays();
+        examScoreWays.setTeacherid(teacherid);
+        examScoreWays.setCourseid(courseid);
+        examScoreWays.setBest(best);
+        examScoreWays.setGood(good);
+        examScoreWays.setSoso(soso);
+        examScoreWays.setWorse(worse);
+        examScoreWaysService.addExamScoreWays(examScoreWays);
+
+        List<ExamScoreWays> examscoreway = examScoreWaysService.findByTeacherid(teacherid);
+        modelMap.put("examscoreway",examscoreway);
+        return "teacher/teachermain/adminNavigator";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable int id,ModelMap modelMap){
+        int teacid = examScoreWaysService.getById(id).getTeacherid();
+        examScoreWaysService.deleteById(id);
+        List<ExamScoreWays> examscoreway = examScoreWaysService.findByTeacherid(teacid);
+        modelMap.put("examscoreway",examscoreway);
+        return "teacher/examscoreways";
+    }
+
+    @RequestMapping("/edit")
+    public String edit(int id,ModelMap modelMap){
+        ExamScoreWays esw = examScoreWaysService.getById(id);
+        modelMap.addAttribute("esw",esw);
+        return "teacher/editExamscoreways";
     }
 
     @PutMapping
-    public ExamScoreWays addExamScoreWays(@RequestBody ExamScoreWays examScoreWays){
-        return examScoreWaysService.addExamScoreWays(examScoreWays);
+    public ExamScoreWays addExamScoreWays(@RequestBody ExamScoreWays examscoreway){
+        return examScoreWaysService.addExamScoreWays(examscoreway);
     }
 
     @DeleteMapping("/{id}")
     public ExamScoreWays deleteExamScoreWays(@PathVariable int id){
         return examScoreWaysService.deleteById(id);
+    }
+
+    @RequestMapping("/update")
+    public String update(ExamScoreWays examScoreWays,ModelMap modelMap){
+        examScoreWays.setScorewayid(examScoreWays.getScorewayid());
+        examScoreWaysService.addExamScoreWays(examScoreWays);
+        List<ExamScoreWays> examscoreway = examScoreWaysService.findByTeacherid(examScoreWays.getTeacherid());
+        modelMap.put("examscoreway",examscoreway);
+        return "teacher/examscoreways";
     }
 }

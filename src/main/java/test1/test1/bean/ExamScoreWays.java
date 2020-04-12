@@ -10,9 +10,6 @@ public class ExamScoreWays {
     private int scorewayid;
 
     @Column
-    private int aimid;
-
-    @Column
     private int teacherid;
 
     @Column
@@ -30,9 +27,8 @@ public class ExamScoreWays {
     @Column
     private String worse;
 
-    public ExamScoreWays(int scorewayid, int aimid, int teacherid, int courseid, String best, String good, String soso, String worse) {
+    public ExamScoreWays(int scorewayid, int teacherid, int courseid, String best, String good, String soso, String worse) {
         this.scorewayid = scorewayid;
-        this.aimid = aimid;
         this.teacherid = teacherid;
         this.courseid = courseid;
         this.best = best;
@@ -47,14 +43,6 @@ public class ExamScoreWays {
 
     public void setScorewayid(int scorewayid) {
         this.scorewayid = scorewayid;
-    }
-
-    public int getAimid() {
-        return aimid;
-    }
-
-    public void setAimid(int aimid) {
-        this.aimid = aimid;
     }
 
     public int getTeacherid() {
@@ -108,8 +96,7 @@ public class ExamScoreWays {
     public ExamScoreWays() {
     }
 
-    public ExamScoreWays(int aimid, int teacherid, int courseid, String best, String good, String soso, String worse) {
-        this.aimid = aimid;
+    public ExamScoreWays( int teacherid, int courseid, String best, String good, String soso, String worse) {
         this.teacherid = teacherid;
         this.courseid = courseid;
         this.best = best;
