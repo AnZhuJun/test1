@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import test1.test1.bean.FinalScore;
 import test1.test1.bean.MidScore;
 import test1.test1.dao.MidScoreDao;
+import test1.test1.dao.TeacherDao;
 
 import java.util.List;
 
@@ -13,8 +14,15 @@ public class MidScoreService {
     @Autowired
     MidScoreDao midScoreDao;
 
-    public List<MidScore> findAll(){
-        return midScoreDao.findAll();
+    @Autowired
+    TeacherDao teacherDao;
+
+    public List<MidScore> findAllByUsername(String username){
+        return midScoreDao.findAllByTeacherid(teacherDao.findByUsername(username).getTeacherid());
+    }
+
+    public List<MidScore> findByTeacherid(int id){
+        return midScoreDao.findAllByTeacherid(id);
     }
 
     public MidScore getById(int id){

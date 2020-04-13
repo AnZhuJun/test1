@@ -30,6 +30,7 @@
              <li class="${light==8?'active':''}"><a  href="/examways/all?username=${name}">考核方式管理</a></li>
              <li class="${light==9?'active':''}"><a  href="/examscoreways/all?username=${name}">考核方式管理</a></li>
              <li class="${light==10?'active':''}"><a  href="/finalscore/all?username=${name}">期末成绩管理</a></li>
+             <li class="${light==11?'active':''}"><a  href="/midscore/all?username=${name}">期中成绩管理</a></li>
             </ul>
         </div>
 

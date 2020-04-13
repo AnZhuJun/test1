@@ -3,17 +3,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix='fmt' %>
 
-<c:set var="title" value="期末成绩信息"/>
+<c:set var="title" value="期中成绩信息"/>
 <%@include file="teachermain/adminHeader.jsp" %>
-<c:set var="light" value="10"/>
+<c:set var="light" value="11"/>
 <%@include file="teachermain/adminNavigator.jsp" %>
 
 <head>
-    <title>期末成绩管理</title>
+    <title>期中成绩管理</title>
 </head>
 <div class="container" >
     <ol class="breadcrumb">
-        <li>期末成绩信息</li>
+        <li>期中成绩信息</li>
     </ol>
     <table class="table table-hover table-striped">
         <thead>
@@ -35,7 +35,7 @@
         </thead>
         <tbody>
 
-        <c:forEach items="${finalscores}" var="u" varStatus="vs">
+        <c:forEach items="${midscores}" var="u" varStatus="vs">
             <tr>
                 <th scope="row">${u.year}</th>
                 <td>${u.term}</td>
@@ -50,8 +50,8 @@
                 <td>${u.second}</td>
                 <td>${u.third}</td>
                 <td>${u.fourth}</td>
-                <td><a href="/finalscore/delete/${u.finalscoreid}"><span class="glyphicon glyphicon-trash"></span></a></td>
-                <td><a href="/finalscore/edit?id=${u.finalscoreid}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/midscore/delete/${u.midscoreid}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <td><a href="/midscore/edit?id=${u.midscoreid}"><span class="glyphicon glyphicon-edit"></span></a></td>
             </tr>
         </c:forEach>
         </tbody>
@@ -68,11 +68,11 @@
         <div class="panel panel-default" style="width: 650px;margin:auto">
             <div class="panel-heading">添加</div>
             <div class="panel-body">
-                <form class="form-horizontal" method="post" id="up-form" action="/finalscore/finalscore" enctype="multipart/form-data">
+                <form class="form-horizontal" method="post" id="up-form" action="/midscore/midscore" enctype="multipart/form-data">
                     <div class="form-group">
 
                         <div class="col-sm-10">
-                            <input type="hidden" class="form-control" value="${fsTeacherId.teacherid}" id="teacherid" name="teacherid">
+                            <input type="hidden" class="form-control" value="${msTeacherId.teacherid}" id="teacherid" name="teacherid">
                         </div>
 
                     </div>

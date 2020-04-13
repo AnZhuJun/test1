@@ -5,7 +5,7 @@
 
 <c:set var="title" value="编辑目标信息"/>
 <%@include file="teachermain/adminHeader.jsp" %>
-<c:set var="light" value="10"/>
+<c:set var="light" value="11"/>
 <%@include file="teachermain/adminNavigator.jsp" %>
 <div class="container">
     <h4 class="page-header">编辑</h4>
@@ -13,47 +13,47 @@
         <div class="panel panel-default" style="width: 600px;margin:0 auto">
             <div class="panel-heading">编辑</div>
             <div class="panel-body">
-                <form class="form-horizontal" method="post" id="add-form" action="/finalscore/update" >
+                <form class="form-horizontal" method="post" id="add-form" action="/midscore/update" >
 
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">课程编码</label>
                         <div class="col-sm-10">
                             <input type="number" class="form-control" id="courseid" name="courseid"
-                                   placeholder="请输入课程编码" value="${fs.courseid}">
+                                   placeholder="请输入课程编码" value="${ms.courseid}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-10">
-                            <input type="hidden"  class="form-control" value="${fs.teacherid}" id="teacherid" name="teacherid">
+                            <input type="hidden"  class="form-control" value="${ms.teacherid}" id="teacherid" name="teacherid">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">学年</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" value="${fs.year}" id="year" name="year" placeholder="请输入学年">
+                            <input type="text"  class="form-control" value="${ms.year}" id="year" name="year" placeholder="请输入学年">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">学期</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" value="${fs.term}" id="term" name="term" placeholder="请输入学期">
+                            <input type="text"  class="form-control" value="${ms.term}" id="term" name="term" placeholder="请输入学期">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">填表日期</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" value="${fs.time}" id="time" name="time" placeholder="请输入填表日期">
+                            <input type="text"  class="form-control" value="${ms.time}" id="time" name="time" placeholder="请输入填表日期">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">学分</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" value="${fs.point}" id="point" name="point" placeholder="请输入学分">
+                            <input type="number"  class="form-control" value="${ms.point}" id="point" name="point" placeholder="请输入学分">
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">学号</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" value="${fs.studentid}" id="studentid" name="studentid" placeholder="请输入学号">
+                            <input type="number"  class="form-control" value="${ms.studentid}" id="studentid" name="studentid" placeholder="请输入学号">
                         </div>
                     </div>
 
@@ -69,7 +69,7 @@
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">课程编号</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" value="${fs.classid}" id="classid" name="classid" placeholder="请输入课程编号">
+                            <input type="number"  class="form-control" value="${ms.classid}" id="classid" name="classid" placeholder="请输入课程编号">
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">学生姓名</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" value="${fs.name}" id="name" name="name" placeholder="请输入学生姓名">
+                            <input type="text"  class="form-control" value="${ms.name}" id="name" name="name" placeholder="请输入学生姓名">
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">第一大题得分</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" value="${fs.first}" id="first" name="first" placeholder="请输入第一大题得分">
+                            <input type="number"  class="form-control" value="${ms.first}" id="first" name="first" placeholder="请输入第一大题得分">
                         </div>
                     </div>
 
@@ -93,7 +93,7 @@
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">第二大题得分</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" value="${fs.second}" id="second" name="second" placeholder="请输入第二大题得分">
+                            <input type="number"  class="form-control" value="${ms.second}" id="second" name="second" placeholder="请输入第二大题得分">
                         </div>
                     </div>
 
@@ -101,7 +101,7 @@
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">第三大题得分</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" value="${fs.third}" id="third" name="third" placeholder="请输入第三大题得分">
+                            <input type="number"  class="form-control" value="${ms.third}" id="third" name="third" placeholder="请输入第三大题得分">
                         </div>
                     </div>
 
@@ -109,11 +109,11 @@
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">第四大题得分</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" value="${fs.fourth}" id="fourth" name="fourth" placeholder="请输入第四大题得分">
+                            <input type="number"  class="form-control" value="${ms.fourth}" id="fourth" name="fourth" placeholder="请输入第四大题得分">
                         </div>
                     </div>
 
-                    <input type="hidden" name="finalscoreid" value="${fs.finalscoreid}">
+                    <input type="hidden" name="midscoreid" value="${ms.midscoreid}">
 
                     <div class="form-group">
                         <div style="text-align: center">
