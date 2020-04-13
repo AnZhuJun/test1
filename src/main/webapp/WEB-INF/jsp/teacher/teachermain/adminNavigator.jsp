@@ -31,6 +31,7 @@
              <li class="${light==9?'active':''}"><a  href="/examscoreways/all?username=${name}">考核方式管理</a></li>
              <li class="${light==10?'active':''}"><a  href="/finalscore/all?username=${name}">期末成绩管理</a></li>
              <li class="${light==11?'active':''}"><a  href="/midscore/all?username=${name}">期中成绩管理</a></li>
+             <li class="${light==12?'active':''}"><a  href="/psscoreways/all?username=${name}">平时成绩评定管理</a></li>
             </ul>
         </div>
 

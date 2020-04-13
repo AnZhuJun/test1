@@ -11,9 +11,6 @@ public class PsScoreWays {
     private int psswid;
 
     @Column
-    private int aimid;
-
-    @Column
     private int teacherid;
 
     @Column
@@ -37,14 +34,6 @@ public class PsScoreWays {
 
     public void setPsswid(int psswid) {
         this.psswid = psswid;
-    }
-
-    public int getAimid() {
-        return aimid;
-    }
-
-    public void setAimid(int aimid) {
-        this.aimid = aimid;
     }
 
     public int getTeacherid() {
@@ -98,9 +87,8 @@ public class PsScoreWays {
     public PsScoreWays() {
     }
 
-    public PsScoreWays(int psswid, int aimid, int teacherid, int courseid, String best, String good, String soso, String worse) {
+    public PsScoreWays(int psswid, int teacherid, int courseid, String best, String good, String soso, String worse) {
         this.psswid = psswid;
-        this.aimid = aimid;
         this.teacherid = teacherid;
         this.courseid = courseid;
         this.best = best;
