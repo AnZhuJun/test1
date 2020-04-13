@@ -164,7 +164,7 @@ public class FinalScore {
     public FinalScore() {
     }
 
-    public FinalScore(int finalscoreid, String year, String term, String time, int point, int studentid, int classid, int courseid, int teacherid, String name, int first, int secound, int third, int fourth) {
+    public FinalScore(int finalscoreid, String year, String term, String time, int point, int studentid, int classid, int courseid, int teacherid, String name, int first, int second, int third, int fourth) {
         this.finalscoreid = finalscoreid;
         this.year = year;
         this.term = term;
@@ -176,7 +176,7 @@ public class FinalScore {
         this.teacherid = teacherid;
         this.name = name;
         this.first = first;
-        this.second = secound;
+        this.second = second;
         this.third = third;
         this.fourth = fourth;
     }

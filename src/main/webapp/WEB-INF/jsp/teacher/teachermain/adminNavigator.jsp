@@ -29,6 +29,7 @@
              <li class="${light==7?'active':''}"><a  href="/paper/all?username=${name}">试卷赋分管理</a></li>
              <li class="${light==8?'active':''}"><a  href="/examways/all?username=${name}">考核方式管理</a></li>
              <li class="${light==9?'active':''}"><a  href="/examscoreways/all?username=${name}">考核方式管理</a></li>
+             <li class="${light==10?'active':''}"><a  href="/finalscore/all?username=${name}">期末成绩管理</a></li>
             </ul>
         </div>
 
