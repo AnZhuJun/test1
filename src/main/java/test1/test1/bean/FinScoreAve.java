@@ -22,10 +22,18 @@ public class FinScoreAve {
     private int averange;
 
     @Column
-    private int aimid;
+    private int teacherid;
 
     @Column
     private int classid;
+
+    public int getTeacherid() {
+        return teacherid;
+    }
+
+    public void setTeacherid(int teacherid) {
+        this.teacherid = teacherid;
+    }
 
     public int getFsaid() {
         return fsaid;
@@ -67,14 +75,6 @@ public class FinScoreAve {
         this.averange = averange;
     }
 
-    public int getAimid() {
-        return aimid;
-    }
-
-    public void setAimid(int aimid) {
-        this.aimid = aimid;
-    }
-
     public int getClassid() {
         return classid;
     }
@@ -86,13 +86,13 @@ public class FinScoreAve {
     public FinScoreAve() {
     }
 
-    public FinScoreAve(int msavid, int courseid, int dt, int xt, int averange, int aimid, int classid) {
+    public FinScoreAve(int msavid, int courseid, int dt, int xt, int averange, int teacherid, int classid) {
         this.fsaid = msavid;
         this.courseid = courseid;
         this.dt = dt;
         this.xt = xt;
         this.averange = averange;
-        this.aimid = aimid;
+        this.teacherid = teacherid;
         this.classid = classid;
     }
 }

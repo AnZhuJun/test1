@@ -22,10 +22,10 @@ public class FinScoreAcc {
     private int score;
 
     @Column
-    private int aimid;
+    private int classid;
 
     @Column
-    private int classid;
+    private int teacherid;
 
     public int getFsaid() {
         return fsaid;
@@ -67,14 +67,6 @@ public class FinScoreAcc {
         this.score = score;
     }
 
-    public int getAimid() {
-        return aimid;
-    }
-
-    public void setAimid(int aimid) {
-        this.aimid = aimid;
-    }
-
     public int getClassid() {
         return classid;
     }
@@ -83,16 +75,24 @@ public class FinScoreAcc {
         this.classid = classid;
     }
 
+    public int getTeacherid() {
+        return teacherid;
+    }
+
+    public void setTeacherid(int teacherid) {
+        this.teacherid = teacherid;
+    }
+
     public FinScoreAcc() {
     }
 
-    public FinScoreAcc(int fsaid, int courseid, int dt, int xt, int score, int aimid, int classid) {
+    public FinScoreAcc(int fsaid, int courseid, int dt, int xt, int score, int teacherid, int classid) {
         this.fsaid = fsaid;
         this.courseid = courseid;
         this.dt = dt;
         this.xt = xt;
         this.score = score;
-        this.aimid = aimid;
+        this.teacherid = teacherid;
         this.classid = classid;
     }
 }

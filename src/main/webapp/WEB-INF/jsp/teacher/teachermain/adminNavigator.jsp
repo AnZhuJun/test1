@@ -25,13 +25,15 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-             <li class="${light==6?'active':''}"><a  href="/courseAim/all?id=${name}">课程目标管理</a></li>
+             <li class="${light==1?'active':''}"><a  href="/courseAim/all?id=${name}">课程目标管理</a></li>
              <li class="${light==7?'active':''}"><a  href="/paper/all?username=${name}">试卷赋分管理</a></li>
              <li class="${light==8?'active':''}"><a  href="/examways/all?username=${name}">考核方式管理</a></li>
              <li class="${light==9?'active':''}"><a  href="/examscoreways/all?username=${name}">考核方式管理</a></li>
              <li class="${light==10?'active':''}"><a  href="/finalscore/all?username=${name}">期末成绩管理</a></li>
              <li class="${light==11?'active':''}"><a  href="/midscore/all?username=${name}">期中成绩管理</a></li>
              <li class="${light==12?'active':''}"><a  href="/psscoreways/all?username=${name}">平时成绩评定管理</a></li>
+             <li class="${light==13?'active':''}"><a  href="/finscoreacc/all?username=${name}">期末题目应得分管理</a></li>
+             <li class="${light==14?'active':''}"><a  href="/midscoreacc/all?username=${name}">期中题目应得分管理</a></li>
             </ul>
         </div>
 

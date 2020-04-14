@@ -22,10 +22,18 @@ public class MidScoreAcc {
     private int score;
 
     @Column
-    private int aimid;
+    private int classid;
 
     @Column
-    private int classid;
+    private int teacherid;
+
+    public int getTeacherid() {
+        return teacherid;
+    }
+
+    public void setTeacherid(int teacherid) {
+        this.teacherid = teacherid;
+    }
 
     public int getMsaid() {
         return msaid;
@@ -67,13 +75,6 @@ public class MidScoreAcc {
         this.score = score;
     }
 
-    public int getAimid() {
-        return aimid;
-    }
-
-    public void setAimid(int aimid) {
-        this.aimid = aimid;
-    }
 
     public int getClassid() {
         return classid;
@@ -86,13 +87,13 @@ public class MidScoreAcc {
     public MidScoreAcc() {
     }
 
-    public MidScoreAcc(int fsaid, int courseid, int dt, int xt, int score, int aimid, int classid) {
+    public MidScoreAcc(int fsaid, int courseid, int dt, int xt, int score, int teacherid, int classid) {
         this.msaid = fsaid;
         this.courseid = courseid;
         this.dt = dt;
         this.xt = xt;
         this.score = score;
-        this.aimid = aimid;
+        this.teacherid = teacherid;
         this.classid = classid;
     }
 }

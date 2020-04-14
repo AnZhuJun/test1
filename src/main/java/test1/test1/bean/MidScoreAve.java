@@ -22,7 +22,7 @@ public class MidScoreAve {
     private int averange;
 
     @Column
-    private int aimid;
+    private int teacherid;
 
     @Column
     private int classid;
@@ -67,12 +67,12 @@ public class MidScoreAve {
         this.averange = averange;
     }
 
-    public int getAimid() {
-        return aimid;
+    public int getTeacherid() {
+        return teacherid;
     }
 
-    public void setAimid(int aimid) {
-        this.aimid = aimid;
+    public void setTeacherid(int teacherid) {
+        this.teacherid = teacherid;
     }
 
     public int getClassid() {
@@ -86,13 +86,13 @@ public class MidScoreAve {
     public MidScoreAve() {
     }
 
-    public MidScoreAve(int msavid, int courseid, int dt, int xt, int averange, int aimid, int classid) {
+    public MidScoreAve(int msavid, int courseid, int dt, int xt, int averange, int teacherid, int classid) {
         this.msaid = msavid;
         this.courseid = courseid;
         this.dt = dt;
         this.xt = xt;
         this.averange = averange;
-        this.aimid = aimid;
+        this.teacherid = teacherid;
         this.classid = classid;
     }
 }

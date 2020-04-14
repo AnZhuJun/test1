@@ -3,8 +3,10 @@ package test1.test1.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import test1.test1.bean.FinScoreAcc;
+import test1.test1.bean.FinalScore;
 import test1.test1.bean.MidScoreAcc;
 import test1.test1.dao.FinScoreAccDao;
+import test1.test1.dao.TeacherDao;
 
 import java.util.List;
 
@@ -13,15 +15,22 @@ public class FinScoreAccService {
     @Autowired
     FinScoreAccDao finScoreAccDao;
 
-    public List<FinScoreAcc> findAll(){
-        return finScoreAccDao.findAll();
+    @Autowired
+    TeacherDao teacherDao;
+
+    public List<FinScoreAcc> findAllByUsername(String username){
+        return finScoreAccDao.findAllByTeacherid(teacherDao.findByUsername(username).getTeacherid());
+    }
+
+    public List<FinScoreAcc> findByTeacherid(int id){
+        return finScoreAccDao.findAllByTeacherid(id);
     }
 
     public FinScoreAcc getById(int id){
         return finScoreAccDao.findById(id).orElse(new FinScoreAcc(-1,-1,-1,-1,-1,-1,-1));
     }
 
-    public FinScoreAcc addFinScoreAcc(FinScoreAcc finScoreAcc){
+    public FinScoreAcc addFinalScoreAcc(FinScoreAcc finScoreAcc){
         return finScoreAccDao.save(finScoreAcc);
     }
 
