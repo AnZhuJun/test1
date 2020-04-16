@@ -13,10 +13,10 @@ public class PsScoreAve {
     private int courseid;
 
     @Column
-    private int score;
+    private int averange;
 
     @Column
-    private int aimid;
+    private int teacherid;
 
     @Column
     private int classid;
@@ -37,20 +37,20 @@ public class PsScoreAve {
         this.courseid = courseid;
     }
 
-    public int getScore() {
-        return score;
+    public int getAverange() {
+        return averange;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setAverange(int averange) {
+        this.averange = averange;
     }
 
-    public int getAimid() {
-        return aimid;
+    public int getTeacherid() {
+        return teacherid;
     }
 
-    public void setAimid(int aimid) {
-        this.aimid = aimid;
+    public void setTeacherid(int teacherid) {
+        this.teacherid = teacherid;
     }
 
     public int getClassid() {
@@ -64,11 +64,11 @@ public class PsScoreAve {
     public PsScoreAve() {
     }
 
-    public PsScoreAve(int psavid, int courseid, int score, int aimid, int classid) {
+    public PsScoreAve(int psavid, int courseid, int averange, int aimid, int classid) {
         this.psavid = psavid;
         this.courseid = courseid;
-        this.score = score;
-        this.aimid = aimid;
+        this.averange = averange;
+        this.teacherid = aimid;
         this.classid = classid;
     }
 }

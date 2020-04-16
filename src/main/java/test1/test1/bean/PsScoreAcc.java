@@ -16,7 +16,7 @@ public class PsScoreAcc {
     private int score;
 
     @Column
-    private int aimid;
+    private int teacherid;
 
     @Column
     private int classid;
@@ -45,12 +45,12 @@ public class PsScoreAcc {
         this.score = score;
     }
 
-    public int getAimid() {
-        return aimid;
+    public int getTeacherid() {
+        return teacherid;
     }
 
-    public void setAimid(int aimid) {
-        this.aimid = aimid;
+    public void setTeacherid(int teacherid) {
+        this.teacherid = teacherid;
     }
 
     public int getClassid() {
@@ -64,11 +64,11 @@ public class PsScoreAcc {
     public PsScoreAcc() {
     }
 
-    public PsScoreAcc(int psaid, int courseid, int score, int aimid, int classid) {
+    public PsScoreAcc(int psaid, int courseid, int score, int teacherid, int classid) {
         this.psaid = psaid;
         this.courseid = courseid;
         this.score = score;
-        this.aimid = aimid;
+        this.teacherid = teacherid;
         this.classid = classid;
     }
 }

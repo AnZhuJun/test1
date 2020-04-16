@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class FinScoreAve {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int fsaid;
+    private int fsavid;
 
     @Column
     private int courseid;
@@ -35,12 +35,12 @@ public class FinScoreAve {
         this.teacherid = teacherid;
     }
 
-    public int getFsaid() {
-        return fsaid;
+    public int getFsavid() {
+        return fsavid;
     }
 
-    public void setFsaid(int fsaid) {
-        this.fsaid = fsaid;
+    public void setFsavid(int fsavid) {
+        this.fsavid = fsavid;
     }
 
     public int getCourseid() {
@@ -87,7 +87,7 @@ public class FinScoreAve {
     }
 
     public FinScoreAve(int msavid, int courseid, int dt, int xt, int averange, int teacherid, int classid) {
-        this.fsaid = msavid;
+        this.fsavid = msavid;
         this.courseid = courseid;
         this.dt = dt;
         this.xt = xt;

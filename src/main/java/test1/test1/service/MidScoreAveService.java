@@ -3,9 +3,11 @@ package test1.test1.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import test1.test1.bean.FinScoreAcc;
+import test1.test1.bean.FinScoreAve;
 import test1.test1.bean.MidScoreAve;
 import test1.test1.dao.MidScoreAccDao;
 import test1.test1.dao.MidScoreAveDao;
+import test1.test1.dao.TeacherDao;
 
 import java.util.List;
 
@@ -14,8 +16,15 @@ public class MidScoreAveService {
     @Autowired
     MidScoreAveDao midScoreAveDao;
 
-    public List<MidScoreAve> findAll(){
-        return midScoreAveDao.findAll();
+    @Autowired
+    TeacherDao teacherDao;
+
+    public List<MidScoreAve> findAllByUsername(String username){
+        return midScoreAveDao.findAllByTeacherid(teacherDao.findByUsername(username).getTeacherid());
+    }
+
+    public List<MidScoreAve> findByTeacherid(int id){
+        return midScoreAveDao.findAllByTeacherid(id);
     }
 
     public MidScoreAve getById(int id){
@@ -28,7 +37,7 @@ public class MidScoreAveService {
 
     public MidScoreAve deleteById(int id){
         MidScoreAve midScoreAve = getById(id);
-        if(midScoreAve.getMsaid() > -1){
+        if(midScoreAve.getMsavid() > -1){
             midScoreAveDao.deleteById(id);
         }
         return midScoreAve;

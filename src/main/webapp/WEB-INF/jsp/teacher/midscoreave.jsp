@@ -3,17 +3,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix='fmt' %>
 
-<c:set var="title" value="期中题目应得分管理"/>
+<c:set var="title" value="期中题目平均分管理"/>
 <%@include file="teachermain/adminHeader.jsp" %>
-<c:set var="light" value="14"/>
+<c:set var="light" value="2"/>
 <%@include file="teachermain/adminNavigator.jsp" %>
 
 <head>
-    <title>期中题目应得分管理</title>
+    <title>期中题目平均分管理</title>
 </head>
 <div class="container" >
     <ol class="breadcrumb">
-        <li>期中题目应得分信息</li>
+        <li>期中题目平均分信息</li>
     </ol>
     <table class="table table-hover table-striped">
         <thead>
@@ -23,12 +23,12 @@
             <th scope="col">教师编号</th>
             <th scope="col">大题号</th>
             <th scope="col">小题号</th>
-            <th scope="col">应得分</th>
+            <th scope="col">平均分</th>
         </tr>
         </thead>
         <tbody>
 
-        <c:forEach items="${midscoreaccs}" var="u" varStatus="vs">
+        <c:forEach items="${midscoreaves}" var="u" varStatus="vs">
             <tr>
                 <th scope="row">${u.courseid}</th>
                 <td>${u.classid}</td>
@@ -36,8 +36,8 @@
                 <td>${u.dt}</td>
                 <td>${u.xt}</td>
                 <td>${u.averange}</td>
-                <td><a href="/midscoreacc/delete/${u.msaid}"><span class="glyphicon glyphicon-trash"></span></a></td>
-                <td><a href="/midscoreacc/edit?id=${u.msaid}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/midscoreave/delete/${u.msavid}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <td><a href="/midscoreave/edit?id=${u.msavid}"><span class="glyphicon glyphicon-edit"></span></a></td>
             </tr>
         </c:forEach>
         </tbody>
@@ -54,11 +54,11 @@
         <div class="panel panel-default" style="width: 650px;margin:auto">
             <div class="panel-heading">添加</div>
             <div class="panel-body">
-                <form class="form-horizontal" method="post" id="up-form" action="/midscoreacc/midscoreacc" enctype="multipart/form-data">
+                <form class="form-horizontal" method="post" id="up-form" action="/midscoreave/midscoreave" enctype="multipart/form-data">
                     <div class="form-group">
 
                         <div class="col-sm-10">
-                            <input type="hidden" class="form-control" value="${msaTeacherId.teacherid}" id="teacherid" name="teacherid">
+                            <input type="hidden" class="form-control" value="${msavTeacherId.teacherid}" id="teacherid" name="teacherid">
                         </div>
 
                     </div>
@@ -92,9 +92,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="courseid" class="col-sm-2 control-label">应得分</label>
+                        <label for="courseid" class="col-sm-2 control-label">平均分</label>
                         <div class="col-sm-10">
-                            <input type="number"  class="form-control" id="averange" name="averange" placeholder="请输入应得分">
+                            <input type="number"  class="form-control" id="averange" name="averange" placeholder="请输入平均分">
                         </div>
                     </div>
 

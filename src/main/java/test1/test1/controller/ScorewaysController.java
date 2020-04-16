@@ -1,4 +1,4 @@
-package test1.test1.controller;
-
-public class ScorewaysController {
-}
+//package test1.test1.controller;
+//
+//public class ScorewaysController {
+//}

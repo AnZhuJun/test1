@@ -5,7 +5,7 @@
 
 <c:set var="title" value="编辑目标信息"/>
 <%@include file="teachermain/adminHeader.jsp" %>
-<c:set var="light" value="14"/>
+<c:set var="light" value="2"/>
 <%@include file="teachermain/adminNavigator.jsp" %>
 <div class="container">
     <h4 class="page-header">编辑</h4>
@@ -13,51 +13,51 @@
         <div class="panel panel-default" style="width: 600px;margin:0 auto">
             <div class="panel-heading">编辑</div>
             <div class="panel-body">
-                <form class="form-horizontal" method="post" id="add-form" action="/midscoreacc/update" >
+                <form class="form-horizontal" method="post" id="add-form" action="/midscoreave/update" >
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">课程编码</label>
                         <div class="col-sm-10">
                             <input type="number" class="form-control" id="courseid" name="courseid"
-                                   placeholder="请输入课程编码" value="${msa.courseid}">
+                                   placeholder="请输入课程编码" value="${msav.courseid}">
                         </div>
                     </div>
 
                     <div class="form-group">
 
                         <div class="col-sm-10">
-                            <input type="hidden"  class="form-control" value="${msa.teacherid}" id="teacherid" name="teacherid">
+                            <input type="hidden"  class="form-control" value="${msav.teacherid}" id="teacherid" name="teacherid">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">班级编号</label>
                         <div class="col-sm-10">
-                            <input type="number"  class="form-control" value="${msa.classid}" id="classid" name="classid" placeholder="请输入班级编号">
+                            <input type="number"  class="form-control" value="${msav.classid}" id="classid" name="classid" placeholder="请输入班级编号">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">大题号</label>
                         <div class="col-sm-10">
-                            <input type="number"  class="form-control" value="${msa.dt}" id="dt" name="dt" placeholder="请输入大题号">
+                            <input type="number"  class="form-control" value="${msav.dt}" id="dt" name="dt" placeholder="请输入大题号">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">小题号</label>
                         <div class="col-sm-10">
-                            <input type="number"  class="form-control" value="${msa.xt}" id="xt" name="xt" placeholder="请输入小题号">
+                            <input type="number"  class="form-control" value="${msav.xt}" id="xt" name="xt" placeholder="请输入小题号">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">应得分</label>
                         <div class="col-sm-10">
-                            <input type="number"  class="form-control" value="${msa.averange}" id="averange" name="averange" placeholder="请输入应得分">
+                            <input type="number"  class="form-control" value="${msav.averange}" id="averange" name="averange" placeholder="请输入应得分">
                         </div>
                     </div>
 
-                    <input type="hidden" name="msaid" value="${msa.msaid}">
+                    <input type="hidden" name="msavid" value="${msav.msavid}">
 
                     <div class="form-group">
                         <div style="text-align: center">

@@ -2,8 +2,10 @@ package test1.test1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import test1.test1.bean.FinScoreAcc;
 import test1.test1.bean.FinScoreAve;
 import test1.test1.dao.FinScoreAveDao;
+import test1.test1.dao.TeacherDao;
 
 import java.util.List;
 
@@ -12,8 +14,15 @@ public class FinScoreAveService {
     @Autowired
     FinScoreAveDao finScoreAveDao;
 
-    public List<FinScoreAve> findAll(){
-        return finScoreAveDao.findAll();
+    @Autowired
+    TeacherDao teacherDao;
+
+    public List<FinScoreAve> findAllByUsername(String username){
+        return finScoreAveDao.findAllByTeacherid(teacherDao.findByUsername(username).getTeacherid());
+    }
+
+    public List<FinScoreAve> findByTeacherid(int id){
+        return finScoreAveDao.findAllByTeacherid(id);
     }
 
     public FinScoreAve getById(int id){
@@ -26,7 +35,7 @@ public class FinScoreAveService {
 
     public FinScoreAve deleteById(int id){
         FinScoreAve finScoreAve = getById(id);
-        if(finScoreAve.getFsaid() > -1){
+        if(finScoreAve.getFsavid() > -1){
             finScoreAveDao.deleteById(id);
         }
         return finScoreAve;

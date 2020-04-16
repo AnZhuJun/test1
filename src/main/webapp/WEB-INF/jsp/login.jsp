@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="logo span5">
-                <h1><a href="">甘肃烟草管理系统登陆 </a></h1>
+                <h1><a href="">工程认证管理系统登陆</a></h1>
             </div>
             <div class="links span8">
                 <a class="home" href="javascript:isLogin(1)"  rel="tooltip" data-placement="bottom" data-original-title="登陆"></a>

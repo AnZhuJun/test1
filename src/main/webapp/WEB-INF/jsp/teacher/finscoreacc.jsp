@@ -35,7 +35,7 @@
                 <td>${u.teacherid}</td>
                 <td>${u.dt}</td>
                 <td>${u.xt}</td>
-                <td>${u.score}</td>
+                <td>${u.averange}</td>
                 <td><a href="/finscoreacc/delete/${u.fsaid}"><span class="glyphicon glyphicon-trash"></span></a></td>
                 <td><a href="/finscoreacc/edit?id=${u.fsaid}"><span class="glyphicon glyphicon-edit"></span></a></td>
             </tr>
@@ -94,7 +94,7 @@
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">应得分</label>
                         <div class="col-sm-10">
-                            <input type="number"  class="form-control" id="score" name="score" placeholder="请输入应得分">
+                            <input type="number"  class="form-control" id="averange" name="averange" placeholder="请输入应得分">
                         </div>
                     </div>
 

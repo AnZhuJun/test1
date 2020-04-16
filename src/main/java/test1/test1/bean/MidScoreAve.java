@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class MidScoreAve {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int msaid;
+    private int msavid;
 
     @Column
     private int courseid;
@@ -27,12 +27,12 @@ public class MidScoreAve {
     @Column
     private int classid;
 
-    public int getMsaid() {
-        return msaid;
+    public int getMsavid() {
+        return msavid;
     }
 
-    public void setMsaid(int msaid) {
-        this.msaid = msaid;
+    public void setMsavid(int msaid) {
+        this.msavid = msaid;
     }
 
     public int getCourseid() {
@@ -87,7 +87,7 @@ public class MidScoreAve {
     }
 
     public MidScoreAve(int msavid, int courseid, int dt, int xt, int averange, int teacherid, int classid) {
-        this.msaid = msavid;
+        this.msavid = msavid;
         this.courseid = courseid;
         this.dt = dt;
         this.xt = xt;

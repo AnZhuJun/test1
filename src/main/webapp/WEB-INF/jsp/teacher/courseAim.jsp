@@ -28,12 +28,12 @@
 
         <c:forEach items="${courseAims}" var="u" varStatus="vs">
             <tr>
-                <th scope="row">${u.aimid}</th>
+                <th scope="row">${u.teacherid}</th>
                 <td>${u.teacherid}</td>
                 <td>${u.courseid}</td>
                 <td>${u.aim}</td>
-                <td><a href="/courseAim/delete/${u.aimid}"><span class="glyphicon glyphicon-trash"></span></a></td>
-                <td><a href="/courseAim/edit?id=${u.aimid}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/courseAim/delete/${u.teacherid}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <td><a href="/courseAim/edit?id=${u.teacherid}"><span class="glyphicon glyphicon-edit"></span></a></td>
             </tr>
         </c:forEach>
         </tbody>

@@ -2,9 +2,11 @@ package test1.test1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import test1.test1.bean.MidScore;
 import test1.test1.bean.PsScore;
 import test1.test1.bean.PsScoreAve;
 import test1.test1.dao.PsScoreDao;
+import test1.test1.dao.TeacherDao;
 
 import java.util.List;
 
@@ -13,8 +15,15 @@ public class PsScoreService {
     @Autowired
     PsScoreDao psScoreDao;
 
-    public List<PsScore> findAll(){
-        return psScoreDao.findAll();
+    @Autowired
+    TeacherDao teacherDao;
+
+    public List<PsScore> findAllByUsername(String username){
+        return psScoreDao.findAllByTeacherid(teacherDao.findByUsername(username).getTeacherid());
+    }
+
+    public List<PsScore> findByTeacherid(int id){
+        return psScoreDao.findAllByTeacherid(id);
     }
 
     public PsScore getById(int id){

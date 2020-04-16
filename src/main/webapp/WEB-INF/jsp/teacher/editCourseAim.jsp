@@ -33,7 +33,7 @@
                             <input type="text"  class="form-control" value="${ca.aim}" id="aim" name="aim" placeholder="请输入目标">
                         </div>
                     </div>
-                    <input type="hidden" name="aimid" value="${ca.aimid}">
+                    <input type="hidden" name="teacherid" value="${ca.teacherid}">
                     <div class="form-group">
                         <div style="text-align: center">
                             <button type="submit" name="${_csrf.parameterName}" value="${_csrf.token}" class="btn btn-success btn-sm">保存</button>
