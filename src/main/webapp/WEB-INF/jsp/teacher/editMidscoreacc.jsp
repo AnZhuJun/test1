@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">应得分</label>
                         <div class="col-sm-10">
-                            <input type="number"  class="form-control" value="${msa.score}" id="averange" name="averange" placeholder="请输入应得分">
+                            <input type="number"  class="form-control" value="${msa.score}" id="score" name="score" placeholder="请输入应得分">
                         </div>
                     </div>
 
