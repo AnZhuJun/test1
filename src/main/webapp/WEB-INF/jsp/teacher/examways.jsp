@@ -34,9 +34,9 @@
                 <th scope="row">${u.examwaysid}</th>
                 <td>${u.teacherid}</td>
                 <td>${u.courseid}</td>
-                <td>${u.psper}</td>
-                <td>${u.midper}</td>
-                <td>${u.finper}</td>
+                <td><div class="css2" title="${u.psper}">...</div></td>
+                <td><div class="css2" title="${u.midper}">...</div></td>
+                <td><div class="css2" title="${u.finper}">...</div></td>
                 <td>${u.orderpoint}</td>
                 <td><a href="/examways/delete/${u.examwaysid}"><span class="glyphicon glyphicon-trash"></span></a></td>
                 <td><a href="/examways/edit?id=${u.examwaysid}"><span class="glyphicon glyphicon-edit"></span></a></td>

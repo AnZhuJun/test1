@@ -8,9 +8,13 @@
 <c:set var="light" value="5"/>
 <%@include file="teachermain/adminNavigator.jsp" %>
 
+
+
+
 <head>
     <title>平时成绩信息</title>
 </head>
+
 <div class="container" >
     <ol class="breadcrumb">
         <li>平时成绩信息</li>
@@ -42,7 +46,7 @@
                 <td>${u.classid}</td>
                 <td>${u.courseid}</td>
                 <td>${u.teacherid}</td>
-                <td>${u.name}</td>
+                <td><div class="css2" title="${u.name}">${u.name}</div></td>
                 <td>${u.kaoqin}</td>
                 <td>${u.zuoye}</td>
                 <td>${u.shiyan}</td>

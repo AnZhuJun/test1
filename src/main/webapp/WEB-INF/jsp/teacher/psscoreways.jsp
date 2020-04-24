@@ -34,10 +34,10 @@
                 <th scope="row">${u.psswid}</th>
                 <td>${u.teacherid}</td>
                 <td>${u.courseid}</td>
-                <td>${u.best}</td>
-                <td>${u.good}</td>
-                <td>${u.soso}</td>
-                <td>${u.worse}</td>
+                <td><div class="css2" title="${u.best}">...</div></td>
+                <td><div class="css2" title="${u.good}">...</div></td>
+                <td><div class="css2" title="${u.soso}">...</div></td>
+                <td><div class="css2" title="${u.worse}">...</div></td>
                 <td><a href="/psscoreways/delete/${u.psswid}"><span class="glyphicon glyphicon-trash"></span></a></td>
                 <td><a href="/psscoreways/edit?id=${u.psswid}"><span class="glyphicon glyphicon-edit"></span></a></td>
             </tr>
