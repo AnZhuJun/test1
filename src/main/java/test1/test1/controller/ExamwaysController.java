@@ -1,10 +1,15 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import test1.test1.bean.Course;
+import test1.test1.bean.ExamScoreWays;
 import test1.test1.bean.Examways;
 import test1.test1.bean.Teacher;
 import test1.test1.service.ExamwaysService;
@@ -22,12 +27,17 @@ public class ExamwaysController {
     TeacherService teacherService;
 
     @GetMapping("/all")
-    public String getAllExamways(String username, ModelMap modelMap){
+    public String getAllExamways(String username, ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"examwaysid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<Examways> examways = examwaysService.findAllByUsername(pageable,username);
+
         Teacher teacher = teacherService.findByUsername(username);
         modelMap.addAttribute("ewsTeacherId",teacher);
 
 
-        List<Examways> examways = examwaysService.findAllByUsername(username);
+//        List<Examways> examways = examwaysService.findAllByUsername(username);
         modelMap.addAttribute("examway",examways);
         return "teacher/examways";
     }
@@ -54,7 +64,7 @@ public class ExamwaysController {
         examwaysService.deleteById(id);
         List<Examways> examways = examwaysService.findByTeacherid(teacid);
         modelMap.put("examway",examways);
-        return "teacher/examways";
+        return "teacher/teachermain/adminNavigator";
     }
 
     @RequestMapping("/edit")
@@ -80,6 +90,6 @@ public class ExamwaysController {
         examwaysService.addExamways(examway);
         List<Examways> examways = examwaysService.findByTeacherid(examway.getTeacherid());
         modelMap.put("examway",examways);
-        return "teacher/examways";
+        return "teacher/teachermain/adminNavigator";
     }
 }

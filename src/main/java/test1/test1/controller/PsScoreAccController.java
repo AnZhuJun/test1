@@ -41,9 +41,9 @@ public class PsScoreAccController {
         Teacher teacher = teacherService.findByUsername(username);
         modelMap.addAttribute("psaTeacherId",teacher);
 
-//        List<PsScoreAcc> psscoreaccs = psScoreAccService.findAllByUsername(username);
         modelMap.addAttribute("psscoreaccs",page);
         return "teacher/psscoreacc";
+//        List<PsScoreAcc> psscoreaccs = psScoreAccService.findAllByUsername(username);
     }
 
     @PostMapping("/psscoreacc")

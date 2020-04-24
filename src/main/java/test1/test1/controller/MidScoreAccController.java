@@ -1,13 +1,14 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import test1.test1.bean.Examways;
-import test1.test1.bean.FinScoreAcc;
-import test1.test1.bean.MidScoreAcc;
-import test1.test1.bean.Teacher;
+import test1.test1.bean.*;
 import test1.test1.service.MidScoreAccService;
 import test1.test1.service.TeacherService;
 
@@ -23,11 +24,16 @@ public class MidScoreAccController {
     TeacherService teacherService;
 
     @GetMapping("/all")
-    public String getAllMidScoreAcc(String username, ModelMap modelMap){
+    public String getAllMidScoreAcc(String username, ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"msaid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<MidScoreAcc> midscoreaccs = midScoreAccService.findAllByUsername(pageable,username);
+
         Teacher teacher = teacherService.findByUsername(username);
         modelMap.addAttribute("msaTeacherId",teacher);
 
-        List<MidScoreAcc> midscoreaccs = midScoreAccService.findAllByUsername(username);
+//        List<MidScoreAcc> midscoreaccs = midScoreAccService.findAllByUsername(username);
         modelMap.addAttribute("midscoreaccs",midscoreaccs);
         return "teacher/midscoreacc";
     }
@@ -80,7 +86,7 @@ public class MidScoreAccController {
         midScoreAccService.addMidScoreAcc(midScoreAcc);
         List<MidScoreAcc> midscoreaccs = midScoreAccService.findByTeacherid(midScoreAcc.getTeacherid());
         modelMap.put("midscoreaccs",midscoreaccs);
-        return "teacher/midscoreacc";
+        return "teacher/teachermain/adminNavigator";
     }
 
 }

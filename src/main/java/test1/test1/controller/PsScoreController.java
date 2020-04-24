@@ -1,13 +1,14 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import test1.test1.bean.FinalScore;
-import test1.test1.bean.MidScore;
-import test1.test1.bean.PsScore;
-import test1.test1.bean.Teacher;
+import test1.test1.bean.*;
 import test1.test1.service.PsScoreService;
 import test1.test1.service.TeacherService;
 
@@ -23,12 +24,16 @@ public class PsScoreController {
     TeacherService teacherService;
 
     @GetMapping("/all")
-    public String getAllPsScore(String username, ModelMap modelMap){
+    public String getAllPsScore(String username, ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"psscoreid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<PsScore> psscores = psScoreService.findAllByUsername(pageable,username);
+
         Teacher teacher = teacherService.findByUsername(username);
         modelMap.addAttribute("psTeacherId",teacher);
 
-
-        List<PsScore> psscores = psScoreService.findAllByUsername(username);
+//        List<PsScore> psscores = psScoreService.findAllByUsername(username);
         modelMap.addAttribute("psscores",psscores);
         return "teacher/psscore";
     }
@@ -87,6 +92,6 @@ public class PsScoreController {
         psScoreService.addPsScore(psScore);
         List<PsScore> psscores = psScoreService.findByTeacherid(psScore.getTeacherid());
         modelMap.put("psscores",psscores);
-        return "teacher/psscore";
+        return "teacher/teachermain/adminNavigator";
     }
 }

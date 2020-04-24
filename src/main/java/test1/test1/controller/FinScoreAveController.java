@@ -1,13 +1,14 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import test1.test1.bean.FinScoreAcc;
-import test1.test1.bean.FinScoreAve;
-import test1.test1.bean.MidScoreAve;
-import test1.test1.bean.Teacher;
+import test1.test1.bean.*;
 import test1.test1.service.FinScoreAveService;
 import test1.test1.service.TeacherService;
 
@@ -23,11 +24,16 @@ public class FinScoreAveController {
     TeacherService teacherService;
 
     @GetMapping("/all")
-    public String getAllFinScoreAve(String username, ModelMap modelMap){
+    public String getAllFinScoreAve(String username, ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"fsavid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<FinScoreAve> finscoreaves = finScoreAveService.findAllByUsername(pageable,username);
+
         Teacher teacher = teacherService.findByUsername(username);
         modelMap.addAttribute("fsavTeacherId",teacher);
 
-        List<FinScoreAve> finscoreaves = finScoreAveService.findAllByUsername(username);
+//        List<FinScoreAve> finscoreaves = finScoreAveService.findAllByUsername(username);
         modelMap.addAttribute("finscoreaves",finscoreaves);
         return "teacher/finscoreave";
     }
@@ -80,6 +86,6 @@ public class FinScoreAveController {
         finScoreAveService.addFinScoreAve(finScoreAve);
         List<FinScoreAve> finscoreaves = finScoreAveService.findByTeacherid(finScoreAve.getTeacherid());
         modelMap.put("finscoreaves",finscoreaves);
-        return "teacher/finscoreave";
+        return "teacher/teachermain/adminNavigator";
     }
 }

@@ -1,6 +1,8 @@
 package test1.test1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import test1.test1.bean.MidScore;
 import test1.test1.bean.PsScore;
@@ -18,8 +20,8 @@ public class PsScoreService {
     @Autowired
     TeacherDao teacherDao;
 
-    public List<PsScore> findAllByUsername(String username){
-        return psScoreDao.findAllByTeacherid(teacherDao.findByUsername(username).getTeacherid());
+    public Page<PsScore> findAllByUsername(Pageable pageable, String username){
+        return psScoreDao.findAllByTeacherid(pageable,teacherDao.findByUsername(username).getTeacherid());
     }
 
     public List<PsScore> findByTeacherid(int id){

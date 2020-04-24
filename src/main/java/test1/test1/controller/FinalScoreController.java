@@ -1,6 +1,10 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -22,12 +26,17 @@ public class FinalScoreController {
     TeacherService teacherService;
 
     @GetMapping("/all")
-    public String getAllFinalScore(String username, ModelMap modelMap){
+    public String getAllFinalScore(String username, ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"finalscoreid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<FinalScore> finalscores = finalScoreService.findAllByUsername(pageable,username);
+
         Teacher teacher = teacherService.findByUsername(username);
         modelMap.addAttribute("fsTeacherId",teacher);
 
 
-        List<FinalScore> finalscores = finalScoreService.findAllByUsername(username);
+//        List<FinalScore> finalscores = finalScoreService.findAllByUsername(username);
         modelMap.addAttribute("finalscores",finalscores);
         return "teacher/finalscore";
     }
@@ -87,6 +96,6 @@ public class FinalScoreController {
         finalScoreService.addFinalScore(finalScore);
         List<FinalScore> finalscores = finalScoreService.findByTeacherid(finalScore.getTeacherid());
         modelMap.put("finalscores",finalscores);
-        return "teacher/finalscore";
+        return "teacher/teachermain/adminNavigator";
     }
 }

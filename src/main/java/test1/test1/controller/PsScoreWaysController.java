@@ -1,6 +1,10 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +26,16 @@ public class PsScoreWaysController {
     TeacherService teacherService;
 
     @GetMapping("/all")
-    public String getAllPsScoreWays(String username, ModelMap modelMap){
+    public String getAllPsScoreWays(String username, ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"psswid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<PsScoreWays> psScoreWays = psScoreWaysService.findAllByUsername(pageable,username);
+
         Teacher teacher = teacherService.findByUsername(username);
         modelMap.addAttribute("pswTeacherId",teacher);
 
-        List<PsScoreWays> psScoreWays = psScoreWaysService.findAllByUsername(username);
+//        List<PsScoreWays> psScoreWays = psScoreWaysService.findAllByUsername(username);
         modelMap.addAttribute("psscoreway",psScoreWays);
         return "teacher/psscoreways";
     }
@@ -53,7 +62,7 @@ public class PsScoreWaysController {
         psScoreWaysService.deleteById(id);
         List<PsScoreWays> psscoreway = psScoreWaysService.findByTeacherid(teacid);
         modelMap.put("psscoreway",psscoreway);
-        return "teacher/psscoreways";
+        return "teacher/teachermain/adminNavigator";
     }
 
     @RequestMapping("/edit")
@@ -79,6 +88,6 @@ public class PsScoreWaysController {
         psScoreWaysService.addPsScoreWays(psScoreWays);
         List<PsScoreWays> psscoreway = psScoreWaysService.findByTeacherid(psScoreWays.getTeacherid());
         modelMap.put("psscoreway",psscoreway);
-        return "teacher/psscoreways";
+        return "teacher/teachermain/adminNavigator";
     }
 }

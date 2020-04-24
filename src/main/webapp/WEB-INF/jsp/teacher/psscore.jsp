@@ -37,7 +37,7 @@
         </thead>
         <tbody>
 
-        <c:forEach items="${psscores}" var="u" varStatus="vs">
+        <c:forEach items="${psscores.content}" var="u" varStatus="vs">
             <tr>
                 <th scope="row">${u.year}</th>
                 <td>${u.term}</td>
@@ -58,6 +58,12 @@
     </table>
 </div>
 
+<div style="text-align: center">
+    <a href="?username=${name}&start=0">[首  页]</a>
+    <a href="?username=${name}&start=${psscores.number-1}">[上一页]</a>
+    <a href="?username=${name}&start=${psscores.number+1}">[下一页]</a>
+    <a href="?username=${name}&start=${psscores.totalPages-1}">[末  页]</a>
+</div>
 
 <%@include file="teachermain/adminFooter.jsp" %>
 

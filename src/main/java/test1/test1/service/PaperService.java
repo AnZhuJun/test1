@@ -1,6 +1,8 @@
 package test1.test1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import test1.test1.bean.Paper;
 import test1.test1.dao.PaperDao;
@@ -11,6 +13,10 @@ import java.util.List;
 public class PaperService {
     @Autowired
     PaperDao paperDao;
+
+    public Page<Paper> findAllByUsername(Pageable pageable, String username){
+        return paperDao.findAllByUsername(pageable,username);
+    }
 
     public List<Paper> findAllByUsername(String username){
         return paperDao.findAllByUsername(username);

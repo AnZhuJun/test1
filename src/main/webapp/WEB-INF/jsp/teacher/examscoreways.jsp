@@ -29,15 +29,15 @@
         </thead>
         <tbody>
 
-        <c:forEach items="${examscoreway}" var="u" varStatus="vs">
+        <c:forEach items="${examscoreway.content}" var="u" varStatus="vs">
             <tr>
                 <th scope="row">${u.scorewayid}</th>
                 <td>${u.teacherid}</td>
                 <td>${u.courseid}</td>
-                <td>${u.best}</td>
-                <td>${u.good}</td>
-                <td>${u.soso}</td>
-                <td>${u.worse}</td>
+                <td><div class="css2" title="${u.best}">...</div></td>
+                <td><div class="css2" title="${u.good}">...</div></td>
+                <td><div class="css2" title="${u.soso}">...</div></td>
+                <td><div class="css2" title="${u.worse}">...</div></td>
                 <td><a href="/examscoreways/delete/${u.scorewayid}"><span class="glyphicon glyphicon-trash"></span></a></td>
                 <td><a href="/examscoreways/edit?id=${u.scorewayid}"><span class="glyphicon glyphicon-edit"></span></a></td>
             </tr>
@@ -45,6 +45,14 @@
         </tbody>
     </table>
 </div>
+
+<div style="text-align: center">
+    <a href="?username=${name}&start=0">[首  页]</a>
+    <a href="?username=${name}&start=${examscoreway.number-1}">[上一页]</a>
+    <a href="?username=${name}&start=${examscoreway.number+1}">[下一页]</a>
+    <a href="?username=${name}&start=${examscoreway.totalPages-1}">[末  页]</a>
+</div>
+
 
 
 <%@include file="teachermain/adminFooter.jsp" %>

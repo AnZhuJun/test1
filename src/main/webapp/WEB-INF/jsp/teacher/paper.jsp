@@ -29,7 +29,7 @@
         </thead>
         <tbody>
 
-        <c:forEach items="${papers}" var="u" varStatus="vs">
+        <c:forEach items="${papers.content}" var="u" varStatus="vs">
             <tr>
                 <th scope="row">${u.paperid}</th>
                 <td>${u.courseid}</td>
@@ -46,6 +46,12 @@
     </table>
 </div>
 
+<div style="text-align: center">
+    <a href="?username=${name}&start=0">[首  页]</a>
+    <a href="?username=${name}&start=${papers.number-1}">[上一页]</a>
+    <a href="?username=${name}&start=${papers.number+1}">[下一页]</a>
+    <a href="?username=${name}&start=${papers.totalPages-1}">[末  页]</a>
+</div>
 
 <%@include file="teachermain/adminFooter.jsp" %>
 

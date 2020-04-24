@@ -1,6 +1,10 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -23,11 +27,16 @@ public class MidScoreAveController {
     TeacherService teacherService;
 
     @GetMapping("/all")
-    public String getAllMidScoreAve(String username, ModelMap modelMap){
+    public String getAllMidScoreAve(String username, ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"msavid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<MidScoreAve> midscoreaves = midScoreAveService.findAllByUsername(pageable,username);
+
         Teacher teacher = teacherService.findByUsername(username);
         modelMap.addAttribute("msavTeacherId",teacher);
 
-        List<MidScoreAve> midscoreaves = midScoreAveService.findAllByUsername(username);
+//        List<MidScoreAve> midscoreaves = midScoreAveService.findAllByUsername(username);
         modelMap.addAttribute("midscoreaves",midscoreaves);
         return "teacher/midscoreave";
     }
@@ -80,7 +89,7 @@ public class MidScoreAveController {
         midScoreAveService.addMidScoreAve(midScoreAve);
         List<MidScoreAve> midscoreaves = midScoreAveService.findByTeacherid(midScoreAve.getTeacherid());
         modelMap.put("midscoreaves",midscoreaves);
-        return "teacher/midscoreave";
+        return "teacher/teachermain/adminNavigator";
     }
 
 }

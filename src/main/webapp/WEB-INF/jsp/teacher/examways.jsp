@@ -29,14 +29,14 @@
         </thead>
         <tbody>
 
-        <c:forEach items="${examway}" var="u" varStatus="vs">
+        <c:forEach items="${examway.content}" var="u" varStatus="vs">
             <tr>
                 <th scope="row">${u.examwaysid}</th>
                 <td>${u.teacherid}</td>
                 <td>${u.courseid}</td>
-                <td><div class="css2" title="${u.psper}">...</div></td>
-                <td><div class="css2" title="${u.midper}">...</div></td>
-                <td><div class="css2" title="${u.finper}">...</div></td>
+                <td>${u.psper}</td>
+                <td>${u.midper}</td>
+                <td>${u.finper}</td>
                 <td>${u.orderpoint}</td>
                 <td><a href="/examways/delete/${u.examwaysid}"><span class="glyphicon glyphicon-trash"></span></a></td>
                 <td><a href="/examways/edit?id=${u.examwaysid}"><span class="glyphicon glyphicon-edit"></span></a></td>
@@ -44,6 +44,13 @@
         </c:forEach>
         </tbody>
     </table>
+</div>
+
+<div style="text-align: center">
+    <a href="?username=${name}&start=0">[首  页]</a>
+    <a href="?username=${name}&start=${examway.number-1}">[上一页]</a>
+    <a href="?username=${name}&start=${examway.number+1}">[下一页]</a>
+    <a href="?username=${name}&start=${examway.totalPages-1}">[末  页]</a>
 </div>
 
 

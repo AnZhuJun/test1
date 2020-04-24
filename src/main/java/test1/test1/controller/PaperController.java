@@ -1,11 +1,16 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import test1.test1.bean.CourseAim;
+import test1.test1.bean.ExamScoreWays;
 import test1.test1.bean.Paper;
 import test1.test1.bean.Teacher;
 import test1.test1.service.PaperService;
@@ -20,11 +25,14 @@ public class PaperController {
     PaperService paperService;
 
 
-
     @GetMapping("/all")
-    public String getAllPaper(String username, ModelMap modelMap){
+    public String getAllPaper(String username, ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"paperid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<Paper> papers = paperService.findAllByUsername(pageable,username);
 
-        List<Paper> papers = paperService.findAllByUsername(username);
+//        List<Paper> papers = paperService.findAllByUsername(username);
         modelMap.addAttribute("papers",papers);
         return "teacher/paper";
     }
@@ -42,7 +50,7 @@ public class PaperController {
 
         List<Paper> papers = paperService.findAllByUsername(username);
         modelMap.put("papers", papers);
-        return "teacher/paper";
+        return "teacher/teachermain/adminNavigator";
     }
 
     @RequestMapping("/delete/{id}")
@@ -51,7 +59,7 @@ public class PaperController {
         paperService.deleteById(id);
         List<Paper> papers = paperService.findAllByUsername(username);
         map.put("papers", papers);
-        return "teacher/paper";
+        return "teacher/teachermain/adminNavigator";
     }
 
     @RequestMapping("/edit")
@@ -77,6 +85,6 @@ public class PaperController {
         paperService.addPaper(paper);
         List<Paper> papers = paperService.findAllByUsername(paper.getUsername());
         map.put("papers", papers);
-        return "teacher/paper";
+        return "teacher/teachermain/adminNavigator";
     }
 }

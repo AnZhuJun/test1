@@ -1,13 +1,14 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import test1.test1.bean.FinScoreAcc;
-import test1.test1.bean.FinalScore;
-import test1.test1.bean.MidScoreAcc;
-import test1.test1.bean.Teacher;
+import test1.test1.bean.*;
 import test1.test1.service.FinScoreAccService;
 import test1.test1.service.TeacherService;
 
@@ -23,11 +24,16 @@ public class FinScoreAccController {
     TeacherService teacherService;
 
     @GetMapping("/all")
-    public String getAllFinalScoreAcc(String username, ModelMap modelMap){
+    public String getAllFinalScoreAcc(String username, ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"fsaid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<FinScoreAcc> finscoreaccs = finScoreAccService.findAllByUsername(pageable,username);
+
         Teacher teacher = teacherService.findByUsername(username);
         modelMap.addAttribute("fsaTeacherId",teacher);
 
-        List<FinScoreAcc> finscoreaccs = finScoreAccService.findAllByUsername(username);
+//        List<FinScoreAcc> finscoreaccs = finScoreAccService.findAllByUsername(username);
         modelMap.addAttribute("finscoreaccs",finscoreaccs);
         return "teacher/finscoreacc";
     }
@@ -80,6 +86,6 @@ public class FinScoreAccController {
         finScoreAccService.addFinalScoreAcc(finScoreAcc);
         List<FinScoreAcc> finscoreaccs = finScoreAccService.findByTeacherid(finScoreAcc.getTeacherid());
         modelMap.put("finscoreaccs",finscoreaccs);
-        return "teacher/finscoreacc";
+        return "teacher/teachermain/adminNavigator";
     }
 }

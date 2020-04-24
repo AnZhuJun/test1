@@ -28,7 +28,7 @@
         </thead>
         <tbody>
 
-        <c:forEach items="${finscoreaves}" var="u" varStatus="vs">
+        <c:forEach items="${finscoreaves.content}" var="u" varStatus="vs">
             <tr>
                 <th scope="row">${u.courseid}</th>
                 <td>${u.classid}</td>
@@ -42,6 +42,13 @@
         </c:forEach>
         </tbody>
     </table>
+</div>
+
+<div style="text-align: center">
+    <a href="?username=${name}&start=0">[首  页]</a>
+    <a href="?username=${name}&start=${finscoreaves.number-1}">[上一页]</a>
+    <a href="?username=${name}&start=${finscoreaves.number+1}">[下一页]</a>
+    <a href="?username=${name}&start=${finscoreaves.totalPages-1}">[末  页]</a>
 </div>
 
 

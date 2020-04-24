@@ -35,7 +35,7 @@
         </thead>
         <tbody>
 
-        <c:forEach items="${finalscores}" var="u" varStatus="vs">
+        <c:forEach items="${finalscores.content}" var="u" varStatus="vs">
             <tr>
                 <th scope="row">${u.year}</th>
                 <td>${u.term}</td>
@@ -56,6 +56,13 @@
         </c:forEach>
         </tbody>
     </table>
+</div>
+
+<div style="text-align: center">
+    <a href="?username=${name}&start=0">[首  页]</a>
+    <a href="?username=${name}&start=${finalscores.number-1}">[上一页]</a>
+    <a href="?username=${name}&start=${finalscores.number+1}">[下一页]</a>
+    <a href="?username=${name}&start=${finalscores.totalPages-1}">[末  页]</a>
 </div>
 
 

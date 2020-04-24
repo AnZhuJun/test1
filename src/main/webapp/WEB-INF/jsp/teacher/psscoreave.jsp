@@ -26,7 +26,7 @@
         </thead>
         <tbody>
 
-        <c:forEach items="${psscoreaves}" var="u" varStatus="vs">
+        <c:forEach items="${psscoreaves.content}" var="u" varStatus="vs">
             <tr>
                 <th scope="row">${u.courseid}</th>
                 <td>${u.classid}</td>
@@ -40,6 +40,12 @@
     </table>
 </div>
 
+<div style="text-align: center">
+    <a href="?username=${name}&start=0">[首  页]</a>
+    <a href="?username=${name}&start=${psscoreaves.number-1}">[上一页]</a>
+    <a href="?username=${name}&start=${psscoreaves.number+1}">[下一页]</a>
+    <a href="?username=${name}&start=${psscoreaves.totalPages-1}">[末  页]</a>
+</div>
 
 <%@include file="teachermain/adminFooter.jsp" %>
 

@@ -1,6 +1,8 @@
 package test1.test1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import test1.test1.bean.Examways;
 import test1.test1.bean.PsScoreWays;
@@ -17,8 +19,8 @@ public class PsScoreWaysService {
     @Autowired
     TeacherDao teacherDao;
 
-    public List<PsScoreWays> findAllByUsername(String username){
-        return psScoreWaysDao.findAllByTeacherid(teacherDao.findByUsername(username).getTeacherid());
+    public Page<PsScoreWays> findAllByUsername(Pageable pageable, String username){
+        return psScoreWaysDao.findAllByTeacherid(pageable,teacherDao.findByUsername(username).getTeacherid());
     }
 
     public List<PsScoreWays> findByTeacherid(int id){
