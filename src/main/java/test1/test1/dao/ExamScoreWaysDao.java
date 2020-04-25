@@ -10,4 +10,6 @@ import java.util.List;
 public interface ExamScoreWaysDao extends JpaRepository<ExamScoreWays,Integer> {
     List<ExamScoreWays> findAllByTeacherid(int id);
     Page<ExamScoreWays> findAllByTeacherid(Pageable pageable, int id);
+
+    ExamScoreWays findAllByTeacheridAndScorewayid(int teacherid,int scorewayid);
 }

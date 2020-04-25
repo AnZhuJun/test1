@@ -92,4 +92,11 @@ public class ExamScoreWaysController {
         modelMap.put("examscoreway",examscoreway);
         return "teacher/teachermain/adminNavigator";
     }
+
+    @RequestMapping("/search")
+    public String search(int teacherid,int scorewayid,ModelMap modelMap){
+        ExamScoreWays sesw = examScoreWaysService.findById(teacherid,scorewayid);
+        modelMap.addAttribute("sesw",sesw);
+        return "teacher/searchExamScoreWays";
+    }
 }

@@ -23,6 +23,10 @@ public class ExamScoreWaysService {
         return examScoreWaysDao.findAllByTeacherid(pageable,teacherDao.findByUsername(username).getTeacherid());
     }
 
+    public ExamScoreWays findById(int teacherid,int scorewayid){
+        return examScoreWaysDao.findAllByTeacheridAndScorewayid(teacherid,scorewayid);
+    }
+
     public List<ExamScoreWays> findByTeacherid(int id){
         return examScoreWaysDao.findAllByTeacherid(id);
     }
