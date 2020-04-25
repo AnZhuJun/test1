@@ -1,9 +1,14 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import test1.test1.bean.Class;
 import test1.test1.bean.Student;
 import test1.test1.bean.Teacher;
 import test1.test1.bean.TeacherCourse;
@@ -20,8 +25,13 @@ public class TeacherController {
     TeacherService teacherService;
 
     @GetMapping("/all")
-    public String getAllTeacher(ModelMap modelMap){
-        modelMap.addAttribute("teachers",teacherService.findAll());
+    public String getAllTeacher(ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"teacherid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<Teacher> teachers = teacherService.findAll(pageable);
+
+        modelMap.addAttribute("teachers",teachers);
         return "admin/teacher";
     }
 
@@ -35,7 +45,7 @@ public class TeacherController {
 
         List<Teacher> teachers = teacherService.findAll();
         modelMap.put("teachers",teachers);
-        return "admin/teacher";
+        return "admin/common/adminNavigator";
     }
 
     @RequestMapping("/delete/{id}")
@@ -43,7 +53,7 @@ public class TeacherController {
         teacherService.deleteById(id);
         List<Teacher> teachers = teacherService.findAll();
         map.put("teachers",teachers);
-        return "admin/teacher";
+        return "admin/common/adminNavigator";
     }
 
     @RequestMapping("/edit")
@@ -69,6 +79,13 @@ public class TeacherController {
         teacherService.addTeacher(teacher);
         List<Teacher> teachers = teacherService.findAll();
         map.put("teachers",teachers);
-        return "admin/teacher";
+        return "admin/common/adminNavigator";
+    }
+
+    @RequestMapping("/search")
+    public String search(int teacherid,ModelMap modelMap){
+        Teacher ste = teacherService.getById(teacherid);
+        modelMap.addAttribute("ste",ste);
+        return "admin/searchTeacher";
     }
 }

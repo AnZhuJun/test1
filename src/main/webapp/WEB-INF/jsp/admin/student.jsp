@@ -25,7 +25,7 @@
         </thead>
         <tbody>
 
-        <c:forEach items="${students}" var="u" varStatus="vs">
+        <c:forEach items="${students.content}" var="u" varStatus="vs">
             <tr>
                 <th scope="row">${u.studentid}</th>
                 <td>${u.name}</td>
@@ -39,10 +39,43 @@
     </table>
 </div>
 
-
+<div style="text-align: center">
+    <a href="?start=0">[首  页]</a>
+    <a href="?start=${students.number-1}">[上一页]</a>
+    <a href="?start=${students.number+1}">[下一页]</a>
+    <a href="?start=${students.totalPages-1}">[末  页]</a>
+</div>
 <%@include file="common/adminFooter.jsp" %>
 
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="container">
+    <div class="row" >
+        <div class="panel panel-default" style="width: 650px;margin:auto">
+            <div class="panel-heading">查找</div>
+            <div class="panel-body">
+                <form class="form-horizontal" method="post" id="up-form1" action="/student/search" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">学号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="studentid" name="studentid"  placeholder="请输入学号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div style="text-align: center">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <button id="search" type="submit" name="${_csrf.parameterName}" value="${_csrf.token}" class="btn btn-success btn-sm">查找</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h1> </h1>
+</div>
 
 <div class="container">
     <div class="row" >

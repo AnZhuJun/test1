@@ -3,6 +3,8 @@ package test1.test1.service;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import test1.test1.bean.Student;
 import test1.test1.dao.StudentDao;
@@ -16,6 +18,10 @@ public class StudentService {
 
     public List<Student> findAll(){
         return studentDao.findAll();
+    }
+
+    public Page<Student> findAll(Pageable pageable){
+        return studentDao.findAll(pageable);
     }
 
     public Student getById(int id){

@@ -1,6 +1,8 @@
 package test1.test1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import test1.test1.bean.Class;
 import test1.test1.bean.Student;
@@ -15,6 +17,14 @@ public class ClassService {
 
     public List<Class> findAll(){
         return classDao.findAll();
+    }
+
+    public Page<Class> findAll(Pageable pageable){
+        return classDao.findAll(pageable);
+    }
+
+    public Class findById(int id){
+        return classDao.findByClassid(id);
     }
 
     public Class getById(int id){

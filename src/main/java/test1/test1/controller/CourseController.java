@@ -1,11 +1,16 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import test1.test1.bean.Class;
 import test1.test1.bean.Course;
+import test1.test1.bean.Teacher;
 import test1.test1.service.CourseService;
 
 import java.util.List;
@@ -17,8 +22,14 @@ public class CourseController {
     CourseService courseService;
 
     @GetMapping("/all")
-    public String getAllCourse(ModelMap modelMap){
-        modelMap.addAttribute("courses",courseService.findAll());
+    public String getAllCourse(ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"courseid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<Course> courses = courseService.findAll(pageable);
+
+
+        modelMap.addAttribute("courses",courses);
         return "admin/course";
     }
 
@@ -31,7 +42,7 @@ public class CourseController {
 
         List<Course> courses = courseService.findAll();
         modelMap.put("courses",courses);
-        return "admin/course";
+        return "admin/common/adminNavigator";
     }
 
     @RequestMapping("/delete/{id}")
@@ -39,7 +50,7 @@ public class CourseController {
         courseService.deleteById(id);
         List<Course> courses = courseService.findAll();
         map.put("courses",courses);
-        return "admin/course";
+        return "admin/common/adminNavigator";
     }
 
     @RequestMapping("/edit")
@@ -65,6 +76,13 @@ public class CourseController {
         courseService.addCourse(course);
         List<Course> courses = courseService.findAll();
         map.put("courses",courses);
-        return "admin/course";
+        return "admin/common/adminNavigator";
+    }
+
+    @RequestMapping("/search")
+    public String search(int courseid,ModelMap modelMap){
+        Course sco = courseService.getById(courseid);
+        modelMap.addAttribute("sco",sco);
+        return "admin/searchCourse";
     }
 }

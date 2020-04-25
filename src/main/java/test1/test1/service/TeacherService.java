@@ -1,6 +1,8 @@
 package test1.test1.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import test1.test1.bean.Student;
@@ -21,6 +23,10 @@ public class TeacherService {
 
     @Autowired
     private RoleDao roleDao;
+
+    public Page<Teacher> findAll(Pageable pageable){
+        return teacherDao.findAllByTeacheridIsGreaterThan(pageable,2);
+    }
 
     public List<Teacher> findAll(){
         return teacherDao.findAllByTeacheridIsGreaterThan(2);

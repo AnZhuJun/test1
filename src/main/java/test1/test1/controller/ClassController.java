@@ -1,10 +1,15 @@
 package test1.test1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import test1.test1.bean.Class;
+import test1.test1.bean.ExamScoreWays;
 import test1.test1.bean.Student;
 import test1.test1.service.ClassService;
 
@@ -17,8 +22,13 @@ public class ClassController {
     ClassService classService;
 
     @GetMapping("/all")
-    public String getAllClass(ModelMap modelMap){
-        modelMap.addAttribute("classes",classService.findAll());
+    public String getAllClass(ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"classid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<Class> classes = classService.findAll(pageable);
+
+        modelMap.addAttribute("classes",classes);
         return "admin/class";
     }
 
@@ -31,7 +41,7 @@ public class ClassController {
 
         List<Class> classes = classService.findAll();
         modelMap.put("classes",classes);
-        return "admin/class";
+        return "admin/common/adminNavigator";
     }
 
     @RequestMapping("/delete/{id}")
@@ -39,7 +49,7 @@ public class ClassController {
         classService.deleteById(id);
         List<Class> classes = classService.findAll();
         map.put("classes",classes);
-        return "admin/class";
+        return "admin/common/adminNavigator";
     }
 
     @RequestMapping("/edit")
@@ -65,6 +75,13 @@ public class ClassController {
         classService.addClass(classes);
         List<Class> classes1 = classService.findAll();
         map.put("classes",classes1);
-        return "admin/class";
+        return "admin/common/adminNavigator";
+    }
+
+    @RequestMapping("/search")
+    public String search(int classid,ModelMap modelMap){
+        Class scl = classService.findById(classid);
+        modelMap.addAttribute("scl",scl);
+        return "admin/searchClass";
     }
 }
