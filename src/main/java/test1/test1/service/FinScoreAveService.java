@@ -23,6 +23,10 @@ public class FinScoreAveService {
         return finScoreAveDao.findAllByTeacherid(pageable,teacherDao.findByUsername(username).getTeacherid());
     }
 
+    public List<FinScoreAve> findById(int teacherid,int courseid){
+        return finScoreAveDao.findAllByTeacheridAndCourseid(teacherid, courseid);
+    }
+
     public List<FinScoreAve> findByTeacherid(int id){
         return finScoreAveDao.findAllByTeacherid(id);
     }

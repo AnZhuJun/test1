@@ -94,4 +94,12 @@ public class PsScoreController {
         modelMap.put("psscores",psscores);
         return "teacher/teachermain/adminNavigator";
     }
+
+
+    @RequestMapping("/search")
+    public String search(int teacherid,String name,ModelMap modelMap){
+        List<PsScore> sps = psScoreService.findByIdName(teacherid,name);
+        modelMap.addAttribute("sps",sps);
+        return "teacher/searchPsscore";
+    }
 }

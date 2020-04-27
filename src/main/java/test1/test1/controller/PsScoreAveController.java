@@ -90,4 +90,10 @@ public class PsScoreAveController {
         return "teacher/teachermain/adminNavigator";
     }
 
+    @RequestMapping("/search")
+    public String search(int teacherid,int courseid,ModelMap modelMap){
+        List<PsScoreAve> spsav = psScoreAveService.findById(teacherid,courseid);
+        modelMap.addAttribute("spsav",spsav);
+        return "teacher/searchPsscoreave";
+    }
 }

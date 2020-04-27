@@ -11,4 +11,6 @@ public interface PsScoreAccDao extends JpaRepository<PsScoreAcc,Integer> {
 //    List<PsScoreAcc> findAllByTeacherid(int id);
     List<PsScoreAcc> findByTeacherid(int id);
     Page<PsScoreAcc> findAllByTeacherid(Pageable pageable,int id);
+
+    List<PsScoreAcc> findAllByTeacheridAndCourseid(int teacherid,int courseid);
 }

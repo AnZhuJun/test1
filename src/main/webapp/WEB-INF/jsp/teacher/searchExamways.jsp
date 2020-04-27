@@ -5,7 +5,7 @@
 
 <c:set var="title" value="查找结果"/>
 <%@include file="teachermain/adminHeader.jsp" %>
-<c:set var="light" value="9"/>
+<c:set var="light" value="8"/>
 <%@include file="teachermain/adminNavigator.jsp" %>
 <div class="container">
     <h4 class="page-header">查找结果</h4>
@@ -16,41 +16,41 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">编号</label>
                         <div class="col-sm-10">
-                            <h5>${sesw.scorewayid}</h5>
+                            <h5>${sew.examwaysid}</h5>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">班级名</label>
+                        <label class="col-sm-3 control-label">课程编号</label>
                         <div class="col-sm-10">
-                            <h5>${sesw.courseid}</h5>
+                            <h5>${sew.courseid}</h5>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">优秀</label>
+                        <label class="col-sm-3 control-label">学分</label>
                         <div class="col-sm-10">
-                            <h5>${sesw.best}</h5>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">良好</label>
-                        <div class="col-sm-10">
-                            <h5>${sesw.good}</h5>
+                            <h5>${sew.orderpoint}</h5>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">及格</label>
+                        <label class="col-sm-3 control-label">平时成绩</label>
                         <div class="col-sm-10">
-                            <h5>${sesw.soso}</h5>
+                            <h5>${sew.psper}</h5>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">不及格</label>
+                        <label class="col-sm-3 control-label">期中成绩</label>
                         <div class="col-sm-10">
-                            <h5>${sesw.worse}</h5>
+                            <h5>${sew.midper}</h5>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">期末成绩</label>
+                        <div class="col-sm-10">
+                            <h5>${sew.finper}</h5>
                         </div>
                     </div>
 

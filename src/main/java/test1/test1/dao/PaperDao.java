@@ -11,4 +11,6 @@ import java.util.List;
 public interface PaperDao extends JpaRepository<Paper,Integer> {
     List<Paper> findAllByUsername(String username);
     Page<Paper> findAllByUsername(Pageable pageable,String username);
+
+    List<Paper> findAllByUsernameAndCourseid(String username,int courseid);
 }

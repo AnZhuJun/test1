@@ -11,4 +11,6 @@ import java.util.List;
 public interface FinalScoreDao extends JpaRepository<FinalScore,Integer> {
     List<FinalScore> findAllByTeacherid(int id);
     Page<FinalScore> findAllByTeacherid(Pageable pageable, int id);
+
+    List<FinalScore> findAllByTeacheridAndName(int teacherid,String name);
 }

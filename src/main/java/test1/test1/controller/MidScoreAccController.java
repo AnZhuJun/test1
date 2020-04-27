@@ -89,4 +89,10 @@ public class MidScoreAccController {
         return "teacher/teachermain/adminNavigator";
     }
 
+    @RequestMapping("/search")
+    public String search(int teacherid,int courseid,ModelMap modelMap){
+        List<MidScoreAcc> smsa = midScoreAccService.findById(teacherid,courseid);
+        modelMap.addAttribute("smsa",smsa);
+        return "teacher/searchMidscoreacc";
+    }
 }

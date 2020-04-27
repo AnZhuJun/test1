@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import test1.test1.bean.ExamScoreWays;
 import test1.test1.bean.Examways;
 import test1.test1.bean.PsScoreWays;
 import test1.test1.dao.PsScoreWaysDao;
@@ -23,6 +24,9 @@ public class PsScoreWaysService {
         return psScoreWaysDao.findAllByTeacherid(pageable,teacherDao.findByUsername(username).getTeacherid());
     }
 
+    public List<PsScoreWays> findById(int teacherid, int courseid){
+        return psScoreWaysDao.findAllByTeacheridAndCourseid(teacherid,courseid);
+    }
     public List<PsScoreWays> findByTeacherid(int id){
         return psScoreWaysDao.findAllByTeacherid(id);
     }

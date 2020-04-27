@@ -23,6 +23,10 @@ public class MidScoreService {
         return midScoreDao.findAllByTeacherid(pageable,teacherDao.findByUsername(username).getTeacherid());
     }
 
+    public List<MidScore> findByIdName(int teacherid,String name){
+        return midScoreDao.findAllByTeacheridAndName(teacherid, name);
+    }
+
     public List<MidScore> findByTeacherid(int id){
         return midScoreDao.findAllByTeacherid(id);
     }

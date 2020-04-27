@@ -23,6 +23,10 @@ public class PsScoreAveService {
         return psScoreAveDao.findAllByTeacherid(pageable,teacherDao.findByUsername(username).getTeacherid());
     }
 
+    public List<PsScoreAve> findById(int teacherid,int courseid){
+        return psScoreAveDao.findAllByTeacheridAndCourseid(teacherid, courseid);
+    }
+
     public List<PsScoreAve> findByTeacherid(int id){
         return psScoreAveDao.findAllByTeacherid(id);
     }

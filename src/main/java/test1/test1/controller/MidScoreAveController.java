@@ -92,4 +92,10 @@ public class MidScoreAveController {
         return "teacher/teachermain/adminNavigator";
     }
 
+    @RequestMapping("/search")
+    public String search(int teacherid,int courseid,ModelMap modelMap){
+        List<MidScoreAve> smsav = midScoreAveService.findById(teacherid,courseid);
+        modelMap.addAttribute("smsav",smsav);
+        return "teacher/searchMidscoreave";
+    }
 }

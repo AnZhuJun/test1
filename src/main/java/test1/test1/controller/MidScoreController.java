@@ -99,4 +99,11 @@ public class MidScoreController {
         modelMap.put("midscores",midscores);
         return "teacher/teachermain/adminNavigator";
     }
+
+    @RequestMapping("/search")
+    public String search(int teacherid,String name,ModelMap modelMap){
+        List<MidScore> sms = midScoreService.findByIdName(teacherid,name);
+        modelMap.addAttribute("sms",sms);
+        return "teacher/searchMidscore";
+    }
 }

@@ -59,6 +59,40 @@
 <div class="container">
     <div class="row" >
         <div class="panel panel-default" style="width: 650px;margin:auto">
+            <div class="panel-heading">查找</div>
+            <div class="panel-body">
+                <form class="form-horizontal" method="post" id="up-form1" action="/finscoreacc/search" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">课程编码</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="courseid" name="courseid"  placeholder="请输入课程编码">
+                        </div>
+                        <div class="col-sm-10">
+                            <c:forEach items="${finscoreaccs.content}" var="u" varStatus="vs">
+                                <input type="hidden" name="teacherid" value="${u.teacherid}">
+                            </c:forEach>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div style="text-align: center">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <button id="search" type="submit" name="${_csrf.parameterName}" value="${_csrf.token}" class="btn btn-success btn-sm">查找</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h1> </h1>
+</div>
+
+
+<div class="container">
+    <div class="row" >
+        <div class="panel panel-default" style="width: 650px;margin:auto">
             <div class="panel-heading">添加</div>
             <div class="panel-body">
                 <form class="form-horizontal" method="post" id="up-form" action="/finscoreacc/finscoreacc" enctype="multipart/form-data">

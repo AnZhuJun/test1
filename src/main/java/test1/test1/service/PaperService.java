@@ -18,6 +18,10 @@ public class PaperService {
         return paperDao.findAllByUsername(pageable,username);
     }
 
+    public List<Paper> findById(String username,int courseid){
+        return paperDao.findAllByUsernameAndCourseid(username, courseid);
+    }
+
     public List<Paper> findAllByUsername(String username){
         return paperDao.findAllByUsername(username);
     }

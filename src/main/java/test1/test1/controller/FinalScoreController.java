@@ -98,4 +98,11 @@ public class FinalScoreController {
         modelMap.put("finalscores",finalscores);
         return "teacher/teachermain/adminNavigator";
     }
+
+    @RequestMapping("/search")
+    public String search(int teacherid,String name,ModelMap modelMap){
+        List<FinalScore> sfs = finalScoreService.findById(teacherid,name);
+        modelMap.addAttribute("sfs",sfs);
+        return "teacher/searchFinalscore";
+    }
 }

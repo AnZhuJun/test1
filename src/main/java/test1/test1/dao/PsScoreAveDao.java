@@ -11,4 +11,6 @@ import java.util.List;
 public interface PsScoreAveDao extends JpaRepository<PsScoreAve,Integer> {
     List<PsScoreAve> findAllByTeacherid(int id);
     Page<PsScoreAve> findAllByTeacherid(Pageable pageable, int id);
+
+    List<PsScoreAve> findAllByTeacheridAndCourseid(int teacherid,int courseid);
 }

@@ -88,4 +88,12 @@ public class FinScoreAccController {
         modelMap.put("finscoreaccs",finscoreaccs);
         return "teacher/teachermain/adminNavigator";
     }
+
+
+    @RequestMapping("/search")
+    public String search(int teacherid,int courseid,ModelMap modelMap){
+        List<FinScoreAcc> sfsa = finScoreAccService.findById(teacherid,courseid);
+        modelMap.addAttribute("sfsa",sfsa);
+        return "teacher/searchFinscoreacc";
+    }
 }

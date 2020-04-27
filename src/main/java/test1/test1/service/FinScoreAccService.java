@@ -24,6 +24,10 @@ public class FinScoreAccService {
         return finScoreAccDao.findAllByTeacherid(pageable,teacherDao.findByUsername(username).getTeacherid());
     }
 
+    public List<FinScoreAcc> findById(int teacherid,int courseid){
+        return finScoreAccDao.findAllByTeacheridAndCourseid(teacherid, courseid);
+    }
+
     public List<FinScoreAcc> findByTeacherid(int id){
         return finScoreAccDao.findAllByTeacherid(id);
     }

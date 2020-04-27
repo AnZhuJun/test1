@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import test1.test1.bean.ExamScoreWays;
+import test1.test1.bean.PsScore;
 import test1.test1.bean.PsScoreWays;
 import test1.test1.bean.Teacher;
 import test1.test1.service.PsScoreWaysService;
@@ -89,5 +90,13 @@ public class PsScoreWaysController {
         List<PsScoreWays> psscoreway = psScoreWaysService.findByTeacherid(psScoreWays.getTeacherid());
         modelMap.put("psscoreway",psscoreway);
         return "teacher/teachermain/adminNavigator";
+    }
+
+
+    @RequestMapping("/search")
+    public String search(int teacherid,int courseid,ModelMap modelMap){
+        List<PsScoreWays> spsw = psScoreWaysService.findById(teacherid,courseid);
+        modelMap.addAttribute("spsw",spsw);
+        return "teacher/searchPsscoreways";
     }
 }

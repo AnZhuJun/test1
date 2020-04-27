@@ -11,4 +11,6 @@ import java.util.List;
 public interface FinScoreAccDao extends JpaRepository<FinScoreAcc,Integer> {
     List<FinScoreAcc> findAllByTeacherid(int id);
     Page<FinScoreAcc> findAllByTeacherid(Pageable pageable, int id);
+
+    List<FinScoreAcc> findAllByTeacheridAndCourseid(int teacherid,int courseid);
 }

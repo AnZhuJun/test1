@@ -9,10 +9,7 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import test1.test1.bean.CourseAim;
-import test1.test1.bean.ExamScoreWays;
-import test1.test1.bean.Paper;
-import test1.test1.bean.Teacher;
+import test1.test1.bean.*;
 import test1.test1.service.PaperService;
 import test1.test1.service.TeacherService;
 
@@ -86,5 +83,14 @@ public class PaperController {
         List<Paper> papers = paperService.findAllByUsername(paper.getUsername());
         map.put("papers", papers);
         return "teacher/teachermain/adminNavigator";
+    }
+
+
+    @RequestMapping("/search")
+    public String search(String username,int courseid,ModelMap modelMap){
+        List<Paper> searchp = paperService.findById(username,courseid);
+        modelMap.addAttribute("searchp",searchp);
+        System.out.println(searchp.toString());
+        return "teacher/searchPaper";
     }
 }

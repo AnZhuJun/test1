@@ -24,6 +24,10 @@ public class FinalScoreService {
         return finalScoreDao.findAllByTeacherid(pageable,teacherDao.findByUsername(username).getTeacherid());
     }
 
+    public List<FinalScore> findById(int teacherid,String name){
+        return finalScoreDao.findAllByTeacheridAndName(teacherid, name);
+    }
+
     public List<FinalScore> findByTeacherid(int id){
         return finalScoreDao.findAllByTeacherid(id);
     }
