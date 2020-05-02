@@ -32,7 +32,7 @@ public class MidScoreService {
     }
 
     public MidScore getById(int id){
-        return midScoreDao.findById(id).orElse(new MidScore(-1,"null","null","null",-1,-1,-1,-1,-1,"null",-1,-1,-1,-1));
+        return midScoreDao.findById(id).orElse(new MidScore(-1,"null","null","null",-1,-1,-1,-1,"null",-1,-1,-1,-1));
     }
 
     public MidScore addMidScore(MidScore midScore){

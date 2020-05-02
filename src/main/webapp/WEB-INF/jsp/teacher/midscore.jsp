@@ -21,7 +21,6 @@
             <th scope="col">学年</th>
             <th scope="col">学期</th>
             <th scope="col">登记时间</th>
-            <th scope="col">学分</th>
             <th scope="col">学号</th>
             <th scope="col">班级编号</th>
             <th scope="col">课程编号</th>
@@ -40,7 +39,6 @@
                 <th scope="row">${u.year}</th>
                 <td>${u.term}</td>
                 <td>${u.time}</td>
-                <td>${u.point}</td>
                 <td>${u.studentid}</td>
                 <td>${u.classid}</td>
                 <td>${u.courseid}</td>
@@ -138,12 +136,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="courseid" class="col-sm-2 control-label">学分</label>
-                        <div class="col-sm-10">
-                            <input type="number"  class="form-control" id="point" name="point" placeholder="请输入学分">
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">学号</label>

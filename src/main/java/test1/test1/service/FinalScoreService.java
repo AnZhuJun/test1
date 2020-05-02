@@ -33,7 +33,7 @@ public class FinalScoreService {
     }
 
     public FinalScore getById(int id){
-        return finalScoreDao.findById(id).orElse(new FinalScore(-1,"null","null","null",-1,-1,-1,-1,-1,"null",-1,-1,-1,-1));
+        return finalScoreDao.findById(id).orElse(new FinalScore(-1,"null","null","null",-1,-1,-1,-1,"null",-1,-1,-1,-1));
     }
 
     public FinalScore addFinalScore(FinalScore finalScore){

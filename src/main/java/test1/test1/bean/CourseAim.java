@@ -18,11 +18,24 @@ public class CourseAim {
     @Column
     private String aim;
 
-    public CourseAim(int aimid, int teacherid, int courseid, String aim) {
+    @Column
+    private String zbpoint;
+
+
+    public CourseAim(int aimid, int teacherid, int courseid, String aim,String zbpoint) {
+        this.zbpoint = zbpoint;
         this.aimid = aimid;
         this.teacherid = teacherid;
         this.courseid = courseid;
         this.aim = aim;
+    }
+
+    public String getZbpoint() {
+        return zbpoint;
+    }
+
+    public void setZbpoint(String zbpoint) {
+        this.zbpoint = zbpoint;
     }
 
     public int getAimid() {

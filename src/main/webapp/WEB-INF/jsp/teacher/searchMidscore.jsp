@@ -18,7 +18,6 @@
                             <th scope="col">学年</th>
                             <th scope="col">学期</th>
                             <th scope="col">登记时间</th>
-                            <th scope="col">学分</th>
                             <th scope="col">学号</th>
                             <th scope="col">班级编号</th>
                             <th scope="col">课程编号</th>
@@ -38,7 +37,6 @@
                                 <td>${u.year}</td>
                                 <td>${u.term}</td>
                                 <td>${u.time}</td>
-                                <td>${u.point}</td>
                                 <td>${u.studentid}</td>
                                 <td>${u.classid}</td>
                                 <td>${u.courseid}</td>

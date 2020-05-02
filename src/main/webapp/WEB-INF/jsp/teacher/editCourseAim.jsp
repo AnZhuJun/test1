@@ -33,7 +33,13 @@
                             <input type="text"  class="form-control" value="${ca.aim}" id="aim" name="aim" placeholder="请输入目标">
                         </div>
                     </div>
-                    <input type="hidden" name="teacherid" value="${ca.teacherid}">
+                    <div class="form-group">
+                        <label for="courseid" class="col-sm-2 control-label">支撑指标点</label>
+                        <div class="col-sm-10">
+                            <input type="text"  class="form-control" value="${ca.zbpoint}" id="zbpoint" name="zbpoint" placeholder="请输入支撑指标点">
+                        </div>
+                    </div>
+                    <input type="hidden" name="aimid" value="${ca.aimid}">
                     <div class="form-group">
                         <div style="text-align: center">
                             <button type="submit" name="${_csrf.parameterName}" value="${_csrf.token}" class="btn btn-success btn-sm">保存</button>

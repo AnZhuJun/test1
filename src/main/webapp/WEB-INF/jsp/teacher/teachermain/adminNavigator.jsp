@@ -27,17 +27,19 @@
             <ul class="nav navbar-nav">
              <li class="${light==1?'active':''}"><a  href="/finscoreave/all?username=${name}">期末平均分管理</a></li>
              <li class="${light==2?'active':''}"><a  href="/midscoreave/all?username=${name}">期中平均分管理</a></li>
-             <li class="${light==3?'active':''}"><a  href="/psscoreacc/all?username=${name}">平时成绩应得分管理</a></li>
-             <li class="${light==4?'active':''}"><a  href="/psscoreave/all?username=${name}">平时成绩平均分管理</a></li>
-             <li class="${light==5?'active':''}"><a  href="/psscore/all?username=${name}">平时成绩管理</a></li>
-             <li class="${light==7?'active':''}"><a  href="/paper/all?username=${name}">试卷赋分管理</a></li>
-             <li class="${light==8?'active':''}"><a  href="/examways/all?username=${name}">考核方式管理</a></li>
-             <li class="${light==9?'active':''}"><a  href="/examscoreways/all?username=${name}">最终成绩评定管理</a></li>
-             <li class="${light==10?'active':''}"><a  href="/finalscore/all?username=${name}">期末成绩管理</a></li>
-             <li class="${light==11?'active':''}"><a  href="/midscore/all?username=${name}">期中成绩管理</a></li>
-             <li class="${light==12?'active':''}"><a  href="/psscoreways/all?username=${name}">平时成绩评定管理</a></li>
-             <li class="${light==13?'active':''}"><a  href="/finscoreacc/all?username=${name}">期末题目应得分管理</a></li>
-             <li class="${light==14?'active':''}"><a  href="/midscoreacc/all?username=${name}">期中题目应得分管理</a></li>
+                <li class="${light==4?'active':''}"><a  href="/psscoreave/all?username=${name}">平时成绩平均分管理</a></li>
+<%--                <li class="${light==7?'active':''}"><a  href="/paper/all?username=${name}">试卷赋分管理</a></li>--%>
+                <li class="${light==10?'active':''}"><a  href="/finalscore/all?username=${name}">期末成绩管理</a></li>
+                <li class="${light==11?'active':''}"><a  href="/midscore/all?username=${name}">期中成绩管理</a></li>
+                <li class="${light==5?'active':''}"><a  href="/psscore/all?username=${name}">平时成绩管理</a></li>
+                <li class="${light==13?'active':''}"><a  href="/finscoreacc/all?username=${name}">期末题目应得分管理</a></li>
+                <li class="${light==14?'active':''}"><a  href="/midscoreacc/all?username=${name}">期中题目应得分管理</a></li>
+                <li class="${light==3?'active':''}"><a  href="/psscoreacc/all?username=${name}">平时成绩应得分管理</a></li>
+                <li class="${light==8?'active':''}"><a  href="/examways/all?username=${name}">考核方式管理</a></li>
+                <li class="${light==9?'active':''}"><a  href="/examscoreways/all?username=${name}">最终成绩评定管理</a></li>
+                <li class="${light==12?'active':''}"><a  href="/psscoreways/all?username=${name}">平时成绩评定管理</a></li>
+                <li class="${light==6?'active':''}"><a  href="/courseAim/all?username=${name}">课程目标管理</a></li>
+                <li class="${light==15?'active':''}"><a  href="/stuscore/all?username=${name}">最终成绩管理</a></li>
             </ul>
         </div>
 

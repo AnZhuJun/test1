@@ -50,12 +50,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="courseid" class="col-sm-2 control-label">学分</label>
-                        <div class="col-sm-10">
-                            <input type="text"  class="form-control" value="${fs.point}" id="point" name="point" placeholder="请输入学分">
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">学号</label>

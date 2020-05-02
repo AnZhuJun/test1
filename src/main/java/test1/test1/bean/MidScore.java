@@ -20,9 +20,6 @@ public class MidScore {
     private String time;
 
     @Column
-    private int point;
-
-    @Column
     private int studentid;
 
     @Column
@@ -81,13 +78,6 @@ public class MidScore {
         this.time = time;
     }
 
-    public int getPoint() {
-        return point;
-    }
-
-    public void setPoint(int point) {
-        this.point = point;
-    }
 
     public int getStudentid() {
         return studentid;
@@ -164,12 +154,11 @@ public class MidScore {
     public MidScore() {
     }
 
-    public MidScore(int finalscoreid, String year, String term, String time, int point, int studentid, int classid, int courseid, int teacherid, String name, int first, int second, int third, int fourth) {
+    public MidScore(int finalscoreid, String year, String term, String time, int studentid, int classid, int courseid, int teacherid, String name, int first, int second, int third, int fourth) {
         this.midscoreid = finalscoreid;
         this.year = year;
         this.term = term;
         this.time = time;
-        this.point = point;
         this.studentid = studentid;
         this.classid = classid;
         this.courseid = courseid;

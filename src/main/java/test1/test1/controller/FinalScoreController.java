@@ -42,14 +42,13 @@ public class FinalScoreController {
     }
 
     @PostMapping("/finalscore")
-    public String addAndGetFinalScore( String year, String term, String time, int point, int studentid, int classid, int courseid, int teacherid, String name, int first, int second, int third, int fourth,ModelMap modelMap){
+    public String addAndGetFinalScore( String year, String term, String time,  int studentid, int classid, int courseid, int teacherid, String name, int first, int second, int third, int fourth,ModelMap modelMap){
         FinalScore finalScore = new FinalScore();
         finalScore.setTeacherid(teacherid);
         finalScore.setCourseid(courseid);
         finalScore.setYear(year);
         finalScore.setTerm(term);
         finalScore.setTime(time);
-        finalScore.setPoint(point);
         finalScore.setStudentid(studentid);
         finalScore.setClassid(classid);
         finalScore.setName(name);

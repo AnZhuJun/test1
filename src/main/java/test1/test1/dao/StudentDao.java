@@ -7,4 +7,6 @@ import test1.test1.bean.Student;
 
 public interface StudentDao extends JpaRepository<Student,Integer> {
     Page<Student> findAll(Pageable pageable);
+
+    Student findAllByStudentid(int studentid);
 }

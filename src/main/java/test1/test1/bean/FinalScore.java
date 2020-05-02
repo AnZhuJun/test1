@@ -20,9 +20,6 @@ public class FinalScore {
     private String time;
 
     @Column
-    private int point;
-
-    @Column
     private int studentid;
 
     @Column
@@ -79,14 +76,6 @@ public class FinalScore {
 
     public void setTime(String time) {
         this.time = time;
-    }
-
-    public int getPoint() {
-        return point;
-    }
-
-    public void setPoint(int point) {
-        this.point = point;
     }
 
     public int getStudentid() {
@@ -164,12 +153,12 @@ public class FinalScore {
     public FinalScore() {
     }
 
-    public FinalScore(int finalscoreid, String year, String term, String time, int point, int studentid, int classid, int courseid, int teacherid, String name, int first, int second, int third, int fourth) {
+    public FinalScore(int finalscoreid, String year, String term, String time, int studentid, int classid, int courseid, int teacherid, String name, int first, int second, int third, int fourth) {
         this.finalscoreid = finalscoreid;
         this.year = year;
         this.term = term;
         this.time = time;
-        this.point = point;
+
         this.studentid = studentid;
         this.classid = classid;
         this.courseid = courseid;

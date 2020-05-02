@@ -43,14 +43,13 @@ public class MidScoreController {
     }
 
     @PostMapping("/midscore")
-    public String addAndGetMidScore( String year, String term, String time, int point, int studentid, int classid, int courseid, int teacherid, String name, int first, int second, int third, int fourth,ModelMap modelMap){
+    public String addAndGetMidScore( String year, String term, String time,int studentid, int classid, int courseid, int teacherid, String name, int first, int second, int third, int fourth,ModelMap modelMap){
         MidScore midScore = new MidScore();
         midScore.setTeacherid(teacherid);
         midScore.setCourseid(courseid);
         midScore.setYear(year);
         midScore.setTerm(term);
         midScore.setTime(time);
-        midScore.setPoint(point);
         midScore.setStudentid(studentid);
         midScore.setClassid(classid);
         midScore.setName(name);
