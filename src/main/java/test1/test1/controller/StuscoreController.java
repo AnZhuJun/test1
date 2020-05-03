@@ -39,11 +39,10 @@ public class StuscoreController {
     }
 
     @PostMapping("/stuscore")
-    public String addAndGetStuscore(int teacherid,int courseid,int classid,int studentid,int sscore,String year,String term,ModelMap modelMap){
+    public String addAndGetStuscore(int teacherid,int courseid,int studentid,int sscore,String year,String term,ModelMap modelMap){
         Stuscore stuscore = new Stuscore();
         stuscore.setTeacherid(teacherid);
         stuscore.setCourseid(courseid);
-        stuscore.setClassid(classid);
         stuscore.setStudentid(studentid);
         stuscore.setSscore(sscore);
         stuscore.setYear(year);
@@ -92,7 +91,7 @@ public class StuscoreController {
 
     @RequestMapping("/search")
     public String search(int teacherid,int studentid,ModelMap modelMap){
-        Stuscore sss = stuscoreService.findById(teacherid,studentid);
+        List<Stuscore> sss = stuscoreService.findById(teacherid,studentid);
         modelMap.addAttribute("sss",sss);
         return "teacher/searchStuscore";
     }

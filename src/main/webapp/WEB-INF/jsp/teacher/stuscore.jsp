@@ -18,12 +18,12 @@
     <table class="table table-hover table-striped">
         <thead>
         <tr>
-            <th scope="col">最终成绩编号</th>
             <th scope="col">学年</th>
             <th scope="col">学期</th>
             <th scope="col">教师编号</th>
             <th scope="col">课程编号</th>
-            <th scope="col">班级编号</th>
+            <th scope="col">课程名</th>
+            <th scope="col">班级名</th>
             <th scope="col">学号</th>
             <th scope="col">学生姓名</th>
             <th scope="col">得分</th>
@@ -33,12 +33,12 @@
 
         <c:forEach items="${stuscores.content}" var="u" varStatus="vs">
             <tr>
-                <th scope="row">${u.stuscoreid}</th>
                 <td>${u.year}</td>
                 <td>${u.term}</td>
                 <td>${u.teacherid}</td>
                 <td>${u.courseid}</td>
-                <td>${u.classid}</td>
+                <td>${u.coursename}</td>
+                <td>${u.classname}</td>
                 <td>${u.studentid}</td>
                 <td>${u.stuname}</td>
                 <td>${u.sscore}</td>
@@ -70,7 +70,7 @@
             <div class="panel-body">
                 <form class="form-horizontal" method="post" id="up-form1" action="/stuscore/search" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">考核方式</label>
+                        <label class="col-sm-2 control-label">学号</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="studentid" name="studentid"  placeholder="请输入学号">
                         </div>
@@ -117,12 +117,12 @@
                         </div>
                     </div>
 
-                     <div class="form-group">
-                        <label for="courseid" class="col-sm-2 control-label">教师编号</label>
-                        <div class="col-sm-10">
-                            <input type="number"  class="form-control" id="classid" name="classid" placeholder="请输入教师编号">
-                        </div>
-                    </div>
+<%--                     <div class="form-group">--%>
+<%--                        <label for="courseid" class="col-sm-2 control-label">班级编号</label>--%>
+<%--                        <div class="col-sm-10">--%>
+<%--                            <input type="number"  class="form-control" id="classid" name="classid" placeholder="请输入教师编号">--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
                      <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">学号</label>
@@ -134,14 +134,14 @@
                      <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">学年</label>
                         <div class="col-sm-10">
-                            <input type="number"  class="form-control" id="year" name="year" placeholder="请输入学年">
+                            <input type="text"  class="form-control" id="year" name="year" placeholder="请输入学年">
                         </div>
                      </div>
 
                      <div class="form-group">
                         <label for="courseid" class="col-sm-2 control-label">学期</label>
                         <div class="col-sm-10">
-                            <input type="number"  class="form-control" id="term" name="term" placeholder="请输入学期">
+                            <input type="text"  class="form-control" id="term" name="term" placeholder="请输入学期">
                         </div>
                      </div>
 

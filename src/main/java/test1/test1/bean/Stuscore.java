@@ -33,7 +33,15 @@ public class Stuscore {
     @Column
     private String stuname;
 
-    public Stuscore(int sscore, int classid, int studentid, int courseid, int teacherid, String year, String term,String stuname) {
+    @Column
+    private String classname;
+
+    @Column
+    private String coursename;
+
+    public Stuscore(int sscore, int classid, int studentid, int courseid, int teacherid, String year, String term,String stuname,String classname,String coursename) {
+        this.coursename = coursename;
+        this.classname = classname;
         this.stuname = stuname;
         this.sscore = sscore;
         this.classid = classid;
@@ -42,6 +50,22 @@ public class Stuscore {
         this.teacherid = teacherid;
         this.year = year;
         this.term = term;
+    }
+
+    public String getCoursename() {
+        return coursename;
+    }
+
+    public void setCoursename(String coursename) {
+        this.coursename = coursename;
+    }
+
+    public String getClassname() {
+        return classname;
+    }
+
+    public void setClassname(String classname) {
+        this.classname = classname;
     }
 
     public int getStuscoreid() {

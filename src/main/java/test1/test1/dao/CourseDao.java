@@ -7,4 +7,6 @@ import test1.test1.bean.Course;
 
 public interface CourseDao extends JpaRepository<Course,Integer> {
     Page<Course> findAll(Pageable pageable);
+
+    Course findByCourseid(int id);
 }

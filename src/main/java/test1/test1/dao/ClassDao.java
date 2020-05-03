@@ -9,4 +9,6 @@ public interface ClassDao extends JpaRepository<Class,Integer> {
     Page<Class> findAll(Pageable pageable);
 
     Class findByClassid(int id);
+
+    Class findAllByClassname(String name);
 }
