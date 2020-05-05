@@ -46,4 +46,6 @@ public class FinScoreAveService {
         }
         return finScoreAve;
     }
+
+
 }

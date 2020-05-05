@@ -35,6 +35,8 @@ public class StuscoreController {
         modelMap.addAttribute("ssTeacherId",teacher);
 
         modelMap.addAttribute("stuscores",stuscores);
+
+//        System.out.println("良好学生:" + stuscoreService.sumgood(1,1,"2019","1"));
         return "teacher/stuscore";
     }
 

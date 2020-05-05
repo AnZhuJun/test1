@@ -12,4 +12,6 @@ public interface CourseAimDao extends JpaRepository<CourseAim,Integer> {
 
     Page<CourseAim> findAllByTeacherid(Pageable pageable,int teacherid);
     List<CourseAim> findAllByTeacheridAndCourseid(int teacherid,int courseid);
+
+    CourseAim findByTeacheridAndCourseid(int teacherid,int courseid);
 }

@@ -40,6 +40,7 @@
                 <li class="${light==12?'active':''}"><a  href="/psscoreways/all?username=${name}">平时成绩评定管理</a></li>
                 <li class="${light==6?'active':''}"><a  href="/courseAim/all?username=${name}">课程目标管理</a></li>
                 <li class="${light==15?'active':''}"><a  href="/stuscore/all?username=${name}">最终成绩管理</a></li>
+                <li class="${light==16?'active':''}"><a  href="/analyse/all?username=${name}">课程分析录入</a></li>
             </ul>
         </div>
 

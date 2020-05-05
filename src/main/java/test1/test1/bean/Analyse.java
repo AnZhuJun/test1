@@ -1,5 +1,7 @@
 package test1.test1.bean;
 
+import org.springframework.stereotype.Controller;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,10 +15,16 @@ public class Analyse {
     private int courseid;
 
     @Column
+    private String coursename;
+
+    @Column
     private int teacherid;
 
     @Column
     private int classid;
+
+    @Column
+    private String classname;
 
     @Column
     private int aimid;
@@ -29,7 +37,7 @@ public class Analyse {
 
     //达成度
     @Column
-    private int achidegree;
+    private double achidegree;
 
     @Column
     private int sumbest;
@@ -62,6 +70,23 @@ public class Analyse {
     @Column
     private String teachername;
 
+    @Column
+    private String year;
+
+    @Column
+    private String term;
+
+    @Column
+    private String examwaysinfo;
+
+    public String getExamwaysinfo() {
+        return examwaysinfo;
+    }
+
+    public void setExamwaysinfo(String examwaysinfo) {
+        this.examwaysinfo = examwaysinfo;
+    }
+
     public String getTeachername() {
         return teachername;
     }
@@ -70,7 +95,7 @@ public class Analyse {
         this.teachername = teachername;
     }
 
-    public Analyse(int courseid, int teacherid, int classid, int aimid, int examwaysid, String zbpoint, int achidegree, int sumbest, int sumgood, int sumsoso, int sumworse, int sumselect, int point, String problem, String comment, String analy, String teachername) {
+    public Analyse(int courseid, int teacherid, int classid, int aimid, int examwaysid, String zbpoint, double achidegree, int sumbest, int sumgood, int sumsoso, int sumworse, int sumselect, int point, String problem, String comment, String analy, String teachername) {
         this.courseid = courseid;
         this.teacherid = teacherid;
         this.classid = classid;
@@ -88,6 +113,38 @@ public class Analyse {
         this.comment = comment;
         this.analy = analy;
         this.teachername = teachername;
+    }
+
+    public String getCoursename() {
+        return coursename;
+    }
+
+    public void setCoursename(String coursename) {
+        this.coursename = coursename;
+    }
+
+    public String getClassname() {
+        return classname;
+    }
+
+    public void setClassname(String classname) {
+        this.classname = classname;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
     }
 
     public int getAnalyseid() {
@@ -146,11 +203,11 @@ public class Analyse {
         this.zbpoint = zbpoint;
     }
 
-    public int getAchidegree() {
+    public double getAchidegree() {
         return achidegree;
     }
 
-    public void setAchidegree(int achidegree) {
+    public void setAchidegree(double achidegree) {
         this.achidegree = achidegree;
     }
 
@@ -229,7 +286,12 @@ public class Analyse {
     public Analyse() {
     }
 
-    public Analyse(int analyseid, int courseid, int teacherid, int classid, int aimid, int examwaysid, String zbpoint, int achidegree, int sumbest, int sumgood, int sumsoso, int sumworse, int sumselect, int point, String problem, String comment, String analy,String teachername) {
+    public Analyse(int analyseid, int courseid, int teacherid, int classid, int aimid, int examwaysid, String zbpoint, double achidegree, int sumbest, int sumgood, int sumsoso, int sumworse, int sumselect, int point, String problem, String comment, String analy,String teachername,String coursename,String classname,String year,String term,String examwaysinfo) {
+        this.examwaysinfo = examwaysinfo;
+        this.year = year;
+        this.term = term;
+        this.coursename = coursename;
+        this.classname = classname;
         this.teachername = teachername;
         this.analyseid =analyseid;
         this.courseid = courseid;

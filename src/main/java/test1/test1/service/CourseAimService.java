@@ -31,6 +31,10 @@ public class CourseAimService {
         return courseAimDao.findAllByTeacherid(teacherDao.findByUsername(id).getTeacherid());
     }
 
+    public CourseAim findByTCid(int teacherid,int courseid){
+        return courseAimDao.findByTeacheridAndCourseid(teacherid, courseid);
+    }
+
     public List<CourseAim> findByTeacherid(int id){
         return courseAimDao.findAllByTeacherid(id);
     }

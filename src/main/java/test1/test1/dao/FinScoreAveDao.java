@@ -1,5 +1,6 @@
 package test1.test1.dao;
 
+import org.hibernate.query.criteria.internal.expression.function.AggregationFunction;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,6 @@ public interface FinScoreAveDao extends JpaRepository<FinScoreAve,Integer> {
     Page<FinScoreAve> findAllByTeacherid(Pageable pageable, int id);
 
     List<FinScoreAve> findAllByTeacheridAndCourseid(int teacherid,int courseid);
+
+    List<FinScoreAve> findAllByTeacheridAndCourseidAndClassid(int teacherid,int courseid,int classid);
 }

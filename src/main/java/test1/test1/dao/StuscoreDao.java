@@ -12,4 +12,6 @@ public interface StuscoreDao extends JpaRepository<Stuscore,Integer> {
     List<Stuscore> findAllByTeacherid(int id);
     Page<Stuscore> findAllByTeacherid(Pageable pageable, int id);
     List<Stuscore> findAllByTeacheridAndStudentid(int teacherid,int studentid);
+
+    int countAllByCourseidAndClassidAndYearAndTermAndSscoreBetween(int courseid,int classid,String year,String term,int start,int end);
 }

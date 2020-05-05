@@ -13,4 +13,6 @@ public interface PsScoreAveDao extends JpaRepository<PsScoreAve,Integer> {
     Page<PsScoreAve> findAllByTeacherid(Pageable pageable, int id);
 
     List<PsScoreAve> findAllByTeacheridAndCourseid(int teacherid,int courseid);
+
+    List<PsScoreAve> findAllByTeacheridAndCourseidAndClassid(int teacherid,int courseid,int classid);
 }

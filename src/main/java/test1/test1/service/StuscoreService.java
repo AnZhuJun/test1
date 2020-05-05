@@ -30,6 +30,22 @@ public class StuscoreService {
         return stuscoreDao.findAllByTeacherid(pageable,teacherDao.findByUsername(username).getTeacherid());
     }
 
+    public int sumbest(int courseid,int classid,String year,String term){
+        return stuscoreDao.countAllByCourseidAndClassidAndYearAndTermAndSscoreBetween(courseid,classid,year,term,90,100);
+    }
+
+    public int sumgood(int courseid,int classid,String year,String term){
+        return stuscoreDao.countAllByCourseidAndClassidAndYearAndTermAndSscoreBetween(courseid,classid,year,term,75,89);
+    }
+
+    public int sumsoso(int courseid,int classid,String year,String term){
+        return stuscoreDao.countAllByCourseidAndClassidAndYearAndTermAndSscoreBetween(courseid,classid,year,term,60,74);
+    }
+
+    public int sumworse(int courseid,int classid,String year,String term){
+        return stuscoreDao.countAllByCourseidAndClassidAndYearAndTermAndSscoreBetween(courseid,classid,year,term,0,59);
+    }
+
     public List<Stuscore> findById(int teacherid,int studentid){
         return stuscoreDao.findAllByTeacheridAndStudentid(teacherid, studentid);
     }

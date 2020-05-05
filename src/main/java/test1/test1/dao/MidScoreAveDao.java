@@ -13,4 +13,6 @@ public interface MidScoreAveDao extends JpaRepository<MidScoreAve,Integer> {
     Page<MidScoreAve> findAllByTeacherid(Pageable pageable, int id);
 
     List<MidScoreAve> findAllByTeacheridAndCourseid(int teacherid,int courseid);
+
+    List<MidScoreAve> findAllByTeacheridAndCourseidAndClassid(int teacherid,int courseid,int classid);
 }

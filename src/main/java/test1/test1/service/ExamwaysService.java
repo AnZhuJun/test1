@@ -22,6 +22,10 @@ public class ExamwaysService {
         return examwaysDao.findAllByTeacherid(pageable,teacherDao.findByUsername(username).getTeacherid());
     }
 
+    public Examways findByCourseid(int courseid){
+        return examwaysDao.findByCourseid(courseid);
+    }
+
     public Examways findById(int teacherid,int examwaysid){
         return examwaysDao.findAllByTeacheridAndAndExamwaysid(teacherid, examwaysid);
     }
