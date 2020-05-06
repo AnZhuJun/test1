@@ -15,6 +15,29 @@ public class TeacherCourse {
     @Column
     private int courseid;
 
+
+    @Column
+    private String coursename;
+
+    @Column
+    private int point;
+
+    public String getCoursename() {
+        return coursename;
+    }
+
+    public void setCoursename(String coursename) {
+        this.coursename = coursename;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
     public TeacherCourse() {
     }
 
@@ -42,7 +65,9 @@ public class TeacherCourse {
         this.courseid = courseid;
     }
 
-    public TeacherCourse(int tcid, int teacherid, int courseid) {
+    public TeacherCourse(int tcid, int teacherid, int courseid,String coursename,int point) {
+        this.coursename = coursename;
+        this.point = point;
         this.tcid = tcid;
         this.teacherid = teacherid;
         this.courseid = courseid;

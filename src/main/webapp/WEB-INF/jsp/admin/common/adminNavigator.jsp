@@ -32,6 +32,7 @@
              <li class="${light==9?'active':''}"><a  href="/teacherCourse/all">教师课程管理</a></li>
              <li class="${light==10?'active':''}"><a  href="/teacher/all">教师管理</a></li>
              <li class="${light==11?'active':''}"><a  href="/upload/all">文件管理</a></li>
+             <li class="${light==12?'active':''}"><a  href="/analyse/aall">评价教师课程</a></li>
             </ul>
         </div>
 

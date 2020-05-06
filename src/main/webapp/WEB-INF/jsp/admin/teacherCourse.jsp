@@ -3,14 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix='fmt' %>
 
-<c:set var="title" value="教师班级信息"/>
+<c:set var="title" value="教师的班级信息"/>
 <%@include file="common/adminHeader.jsp" %>
 <c:set var="light" value="9"/>
 <%@include file="common/adminNavigator.jsp" %>
 
 <div class="container" >
     <ol class="breadcrumb">
-        <li>教师班级信息</li>
+        <li>教师的班级信息</li>
     </ol>
     <table class="table table-hover table-striped">
         <thead>
@@ -18,6 +18,8 @@
             <th scope="col">教师班级编号</th>
             <th scope="col">教师编号</th>
             <th scope="col">课程编码</th>
+            <th scope="col">课程名</th>
+            <th scope="col">学分</th>
         </tr>
         </thead>
         <tbody>
@@ -27,6 +29,8 @@
                 <th scope="row">${u.tcid}</th>
                 <td>${u.teacherid}</td>
                 <td>${u.courseid}</td>
+                <td>${u.coursename}</td>
+                <td>${u.point}</td>
                 <td><a href="/teacherCourse/delete/${u.tcid}"><span class="glyphicon glyphicon-trash"></span></a></td>
                 <td><a href="/teacherCourse/edit?id=${u.tcid}"><span class="glyphicon glyphicon-edit"></span></a></td>
             </tr>
@@ -54,9 +58,9 @@
             <div class="panel-body">
                 <form class="form-horizontal" method="post" id="up-form1" action="/teacherCourse/search" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">教师课程编号</label>
+                        <label class="col-sm-2 control-label">教师编号</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="tcid" name="tcid"  placeholder="请输入课程编号">
+                            <input type="text" class="form-control" id="teacherid" name="teacherid"  placeholder="请输入教师编号">
                         </div>
                     </div>
                     <div class="form-group">
@@ -91,6 +95,12 @@
                         <label for="teacherid" class="col-sm-2 control-label">课程编号</label>
                         <div class="col-sm-10">
                             <input type="number"  class="form-control" id="courseid" name="courseid" placeholder="请输入课程编号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacherid" class="col-sm-2 control-label">学分</label>
+                        <div class="col-sm-10">
+                            <input type="number"  class="form-control" id="point" name="point" placeholder="请输入学分">
                         </div>
                     </div>
                     <div class="form-group">

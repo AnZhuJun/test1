@@ -68,6 +68,9 @@ public class AnalyseService {
 
     @Autowired
     PsScoreAveDao psScoreAveDao;
+
+    @Autowired
+    TeacherCourseDao teacherCourseDao;
     //启动分析需要输入，课程编码，教师编号（自动），班级编号,YEAR,TERM，通过课程id找aimid和zbpoint和examwaysid
     //通过算法得到achidegree达成度
     //通过courseid和classid找到最终成绩表，然后计算获得sumbest,sumgood,sumsoso,sumworse
@@ -147,6 +150,8 @@ public class AnalyseService {
         String examwaysinfo = "期末占比%（" + examways.getFinper() + ") + 期中占比%（" + examways.getMidper() + ") + 平时成绩占比%(" + examways.getPsper() + ")";
         analyse.setExamwaysinfo(examwaysinfo);
 
+        analyse.setPoint(teacherCourseDao.findAllByTeacheridAndCourseid(teacherid,courseid).getPoint());
+
         if(analyse.getProblem() == null)
             analyse.setProblem("还未填写分析与改进");
 
@@ -173,6 +178,14 @@ public class AnalyseService {
             analyseDao.deleteById(id);
         }
         return analyse;
+    }
+
+    public List<Analyse> findAll(){
+        return analyseDao.findAll();
+    }
+
+    public Page<Analyse> findAll(Pageable pageable){
+        return analyseDao.findAll(pageable);
     }
 
     public Analyse findById(int teacherid,int courseid,int classid,String year,String term){

@@ -10,35 +10,35 @@
 <div class="container">
     <h4 class="page-header">查找结果</h4>
     <div class="row" >
-        <div class="panel panel-default" style="width: 600px;margin:0 auto">
-            <div class="panel-heading">查找结果</div>
-            <div class="panel-body">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">教师课程编号</label>
-                        <div class="col-sm-10">
-                            <h5>${stc.tcid}</h5>
-                        </div>
-                    </div>
+        <div class="container" >
+            <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">编号</th>
+                    <th scope="col">课程编号</th>
+                    <th scope="col">课程名</th>
+                    <th scope="col">教师编号</th>
+                    <th scope="col">学分</th>
+                </tr>
+                </thead>
+                <tbody>
 
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">教师编号</label>
-                        <div class="col-sm-10">
-                            <h5>${stc.teacherid}</h5>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">课程编码</label>
-                        <div class="col-sm-10">
-                            <h5>${stc.courseid}</h5>
-                        </div>
-                    </div>
+                <c:forEach items="${stc}" var="u" varStatus="vs">
+                    <tr>
+                        <th scope="row">${u.tcid}</th>
+                        <td>${u.courseid}</td>
+                        <td>${u.coursename}</td>
+                        <td>${u.teacherid}</td>
+                        <td>${u.point}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
 
-                    <div class="form-group">
-                        <div style="text-align: center">
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        </div>
-                    </div>
-
+        <div class="form-group">
+            <div style="text-align: center">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </div>
         </div>
     </div>

@@ -13,6 +13,7 @@ import test1.test1.bean.Course;
 import test1.test1.bean.Teacher;
 import test1.test1.bean.TeacherCourse;
 import test1.test1.service.TeacherCourseService;
+import test1.test1.service.TeacherService;
 
 import java.util.List;
 
@@ -22,6 +23,23 @@ public class TeacherCourseController {
     @Autowired
     TeacherCourseService teacherCourseService;
 
+    @Autowired
+    TeacherService teacherService;
+
+    @GetMapping("/tall")
+    public String getAllTeacherCourse(String username,ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"tcid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<TeacherCourse> teacherCourses = teacherCourseService.findById(pageable,username);
+
+        Teacher teacher =  teacherService.findByUsername(username);
+        modelMap.addAttribute("tcTeacherid",teacher);
+
+        modelMap.addAttribute("teacherCourses",teacherCourses);
+        return "teacher/teacherCourse";
+    }
+
     @GetMapping("/all")
     public String getAllTeacherCourse(ModelMap modelMap,@RequestParam(value = "start",defaultValue = "0")int start,@RequestParam(value = "size",defaultValue = "5")int size){
         start = start<0?0:start;
@@ -30,14 +48,16 @@ public class TeacherCourseController {
         Page<TeacherCourse> teacherCourses = teacherCourseService.findAll(pageable);
 
         modelMap.addAttribute("teacherCourses",teacherCourses);
+
         return "admin/teacherCourse";
     }
 
     @PostMapping("/teacherCourse")
-    public String addAndGetTeacherCourse(int courseid,int teacherid,ModelMap modelMap){
+    public String addAndGetTeacherCourse(int courseid,int teacherid,int point,ModelMap modelMap){
         TeacherCourse teacherCourse = new TeacherCourse();
         teacherCourse.setCourseid(courseid);
         teacherCourse.setTeacherid(teacherid);
+        teacherCourse.setPoint(point);
         teacherCourseService.addTeacherCourse(teacherCourse);
 
         List<TeacherCourse> teacherCourses = teacherCourseService.findAll();
@@ -80,8 +100,8 @@ public class TeacherCourseController {
     }
 
     @RequestMapping("/search")
-    public String search(int tcid,ModelMap modelMap){
-        TeacherCourse stc = teacherCourseService.getById(tcid);
+    public String search(int teacherid,ModelMap modelMap){
+        List<TeacherCourse> stc = teacherCourseService.findAllByTeacherid(teacherid);
         modelMap.addAttribute("stc",stc);
         return "admin/searchTeacherCourse";
     }

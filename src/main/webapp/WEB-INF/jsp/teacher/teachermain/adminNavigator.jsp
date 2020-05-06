@@ -41,6 +41,8 @@
                 <li class="${light==6?'active':''}"><a  href="/courseAim/all?username=${name}">课程目标管理</a></li>
                 <li class="${light==15?'active':''}"><a  href="/stuscore/all?username=${name}">最终成绩管理</a></li>
                 <li class="${light==16?'active':''}"><a  href="/analyse/all?username=${name}">课程分析录入</a></li>
+                <li class="${light==17?'active':''}"><a  href="/outline/all">大纲上传</a></li>
+                <li class="${light==18?'active':''}"><a  href="/teacherCourse/tall?username=${name}">我的课程</a></li>
             </ul>
         </div>
 

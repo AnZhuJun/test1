@@ -28,6 +28,13 @@
                                    placeholder="请输入课程编号">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="teacherid" class="col-sm-2 control-label">学分</label>
+                        <div class="col-sm-10">
+                            <input type="text"  class="form-control" value="${tc.point}" id="point" name="point"
+                                   placeholder="请输入学分">
+                        </div>
+                    </div>
                     <input type="hidden" name="tcid" value="${tc.tcid}">
                     <div class="form-group">
                         <div style="text-align: center">

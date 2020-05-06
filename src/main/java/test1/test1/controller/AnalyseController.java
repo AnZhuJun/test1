@@ -97,4 +97,41 @@ public class AnalyseController {
         modelMap.addAttribute("san",san);
         return "teacher/searchAnalyse";
     }
+
+    @RequestMapping("/asearch")
+    public String asearch(int teacherid,int courseid,int classid,String year,String term,ModelMap modelMap){
+        Analyse asan = analyseService.findById(teacherid,courseid,classid,year,term);
+        modelMap.addAttribute("asan",asan);
+        return "admin/searchAnalyse";
+    }
+
+
+    @GetMapping("/aall")
+    public String getAllAnalyse(ModelMap modelMap, @RequestParam(value = "start",defaultValue = "0")int start, @RequestParam(value = "size",defaultValue = "5")int size){
+        start = start<0?0:start;
+        Sort sort = new Sort(Sort.Direction.DESC,"analyseid");
+        Pageable pageable = new PageRequest(start,size,sort);
+        Page<Analyse> analyses = analyseService.findAll(pageable);
+
+        modelMap.addAttribute("aanalyses",analyses);
+
+        return "admin/analyse";
+    }
+
+    @RequestMapping("/aedit")
+    public String aedit(int id,ModelMap modelMap){
+        Analyse ans = analyseService.getById(id);
+        modelMap.addAttribute("aans",ans);
+        return "admin/editAnalyse";
+    }
+
+    @RequestMapping("/aupdate")
+    public String aupdate(Analyse analyse,ModelMap modelMap){
+        analyse.setAnalyseid(analyse.getAnalyseid());
+        analyseService.create(analyse);
+        List<Analyse> analyses = analyseService.findAll();
+        modelMap.put("aanalyses",analyses);
+        return "admin/common/adminNavigator";
+    }
+
 }
